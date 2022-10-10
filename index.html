@@ -28,17 +28,62 @@
     <div class="hero is-large has-background">
         <img alt="food" class="hero-background is-transparent" src="/assets/alice-pasqual-M6ZYi6AH2-s-unsplash.jpg" />
         <div class="hero-body">
+            <main>
+                <div>
             <div class="subtitile">Recipes ready for your time and budget</div>
+            </div>
+            <div>
             <form id="searchRecipe" class="categories">
                     <label class="form-label" for="recipeName"></label>
-                    <input name="recipe" placeholder="Find a recipe..."id="recipeName" type="text" autofocus="true" class="form-input"/>
-                    <div><button type="submit" class="btn">Search</button>
-            </form>
-        <div>
-            <form action="/action_page.php">
-                <label for="categories" aria-placeholder="Categories"></label>
+                    <input class="input is-rounded" placeholder="Find a recipe...">
+            </div>  
+            
+            <div class="dropdown">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                    <span>Categories</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item" label="Meals">
+                      Breakfast
+                    </a>
+                    <a href="#" class="dropdown-item">
+                      Lunch
+                    </a>
+                    <a href="#" class="dropdown-item">
+                      Dinner
+                    </a>
+                    <a href="#" class="dropdown-item" label="Diets">
+                      Vegetarian
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Low-Carb
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        High Protein
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        High Fiber
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                      More
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div><button class="button is-rounded">Search</button>
+              </div>
+            <!-- <form action="">
+                <label for="categories" placeholder="Categories"></label>
                 <select name="recipes" id="categories">
-                <optgroup label="Meals">
+                
+            <optgroup label="Meals">
                 <option value="breakfast">Breakfast</option>
                 <option value="lunch">Lunch</option>
                 <option value="dinner">Dinner</option>
@@ -46,16 +91,14 @@
                 <option value="vegetarian">Vegetarian</option>
                 <option value="lowCarb">Low-Carb</option>
                 <option value="highProtein">High Protein</option>
-                <option value="highFiber">High Fiber</option>
-               
+                <option value="highFiber">High Fiber</option> 
             </optgroup>
-        </optgroup>
-            <optgroup label="German Cars">
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-            </optgroup>
+            <br><br>            
         </select>
-
+            </form> -->
+        <div>
+            
+    </main>
 </form>
         </div>
         </div>
