@@ -28,7 +28,7 @@
 .recipe-card >* {
     color: var(--text-color);
     background-color: var(--card-color);
-  }
+}
   
 .recipe-card h3 {
     font-family: var(--header-font);
