@@ -8,6 +8,10 @@
   --font: "inter", sans-serif;
 }
 
+input {
+  width: 600px !important;
+}
+
 .hero.has-background {
   position: relative;
   overflow: hidden;
@@ -33,5 +37,9 @@
 .hero-body {
   background-color: var(--accent-color);
   max-height: 300px;
+  width: 100%;
+}
+
+.full-width {
   width: 100%;
 }
