@@ -1,0 +1,23 @@
+:root {
+  --bg-color: #fff3e8;
+  --accent-color: #d6ccb7;
+  --btn-color: #c28829;
+  --text-color: #142c2d;
+  --card-color: #c68370;
+  --header-font: "ABeeZee", sans-serif;
+  --font: "inter", sans-serif;
+}
+
+
+h4 {
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+#directions{
+    background-color: var(--accent-color);
+}
+
+#recipe {
+  background-color: var(--card-color);
+}
