@@ -1,1 +1,9 @@
-
+:root {
+    --bg-color: #FFF3E8;
+    --accent-color: #D6CCB7;
+    --btn-color: #C28829;
+    --text-color: #142C2D;
+    --card-color: #C68370;
+    --header-font: "ABeeZee", sans-serif;
+    --font: "inter", sans-serif;
+  }

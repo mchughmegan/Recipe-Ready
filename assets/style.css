@@ -1,14 +1,32 @@
+:root {
+  --bg-color: #fff3e8;
+  --accent-color: #d6ccb7;
+  --btn-color: #c28829;
+  --text-color: #142c2d;
+  --card-color: #c68370;
+  --header-font: "ABeeZee", sans-serif;
+  --font: "inter", sans-serif;
+}
+
 .hero.has-background {
     position: relative;
     overflow: hidden;
   }
-  .hero-background {
-    position: absolute;
-    object-fit: cover;
-    object-position: center center;
-    width: 100%;
-    height: 100%;
-  }
-  .hero-background.is-transparent {
+
+.hero-background.is-transparent {
     opacity: 0.3;
   }
+
+  .footer,
+  .push {
+    height: 40px;
+  }
+  
+.hero-background {
+  position: absolute;
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  height: 100%;
+}
+
