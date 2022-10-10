@@ -9,8 +9,8 @@
   }
 
 .card {
-    min-width: 450px;
-    width: 50% !important;
+    min-width: 500px;
+    width: 48% !important;
     height: auto !important;
 }
 
@@ -34,6 +34,7 @@
     font-family: var(--header-font);
     color: var(--text-color);
     border-bottom: 2px solid var(--text-color);
+    width: fit-content;
 }
 
 .recipe-card >* p {
@@ -52,4 +53,8 @@
 #recipe-img {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+}
+
+#recipe-results {
+    flex-wrap: wrap;
 }
