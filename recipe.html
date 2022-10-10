@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Inter&display=swap"
+    />
+    <link rel="stylseet" href="./assets/recipe.css" />
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Recipe</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-1">Recipe Ready 🍴</h1>
+        </div>
+        <div class="column">
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item" href="index.html">Home</a>
+              <a class="navbar-item" href="results.html">Results</a>
+              <a class="navbar-item" href="recipe.html">Recipes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-8 m-auto">
+          <article
+            class="is-flex is-flex-direction-column tile is-child notification is-grey-light"
+          >
+            <p class="title recipe-title">{Recipe Title}</p>
+            <figure class="image is-3by1">
+              <img src="https://bulma.io/images/placeholders/640x480.png" />
+            </figure>
+
+            <div
+              class="is-flex is-flex-direction-row content is-justify-content-space-around m-auto"
+            >
+              <span class="card-item p-2">
+                <span class="material-symbols-outlined icon is-inline"
+                  >timer</span
+                >
+                <p class="is-inline" id="time">45 mins</p>
+              </span>
+              <span class="card-item p-2">
+                <span class="material-symbols-outlined icon is-inline"
+                  >bolt</span
+                >
+                <p class="is-inline" id="calories">250 cal/serving</p>
+              </span>
+              <span class="card-item p-2">
+                <span class="material-symbols-outlined icon is-inline"
+                  >egg</span
+                >
+                <p class="is-inline" id="ingredients">5 ingredients</p>
+              </span>
+
+              <span class="card-item p-2">
+                <span class="material-symbols-outlined icon is-inline"
+                  >restaurant_menu</span
+                >
+                <p class="is-inline" id="difficulty">Easy</p>
+              </span>
+              <span class="card-item p-2">
+                <span class="material-symbols-outlined icon is-inline"
+                  >set_meal</span
+                >
+                <p class="is-inline" id="diet">Vegetarian</p>
+              </span>
+            </div>
+            <div class="is-flex is-flex-direction-column">
+              <h4>Step-by-Step Recipe</h4>
+              <ol class="ml-5">
+                <li class="p-2"></li>
+                <li class="p-2"></li>
+                <li class="p-2"></li>
+                <li class="p-2"></li>
+              </ol>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
