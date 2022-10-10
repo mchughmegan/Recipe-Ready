@@ -9,19 +9,19 @@
 }
 
 .hero.has-background {
-    position: relative;
-    overflow: hidden;
-  }
+  position: relative;
+  overflow: hidden;
+}
 
 .hero-background.is-transparent {
-    opacity: 0.3;
-  }
+  opacity: 0.3;
+}
 
-  .footer,
-  .push {
-    height: 40px;
-  }
-  
+.footer,
+.push {
+  height: 40px;
+}
+
 .hero-background {
   position: absolute;
   object-fit: cover;
@@ -30,3 +30,8 @@
   height: 100%;
 }
 
+.hero-body {
+  background-color: var(--accent-color);
+  max-height: 300px;
+  width: 100%;
+}
