@@ -8,78 +8,96 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Inter&display=swap" /> 
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Inter&display=swap"
+    />
+    <link rel="stylesheet" href="./assets/card-style.css"/>
     <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-     <section class="container">
-        <div class="columns">
-            <div class="column">
-                <h1 class="title is-1">Recipe Ready 🍴</h1>
-                <h4 class="is-italic">Results for {recipe that was searched}</h4>
-            </div>     
-            <div class="column">
-                <div class="navbar-menu">                     
-                    <div class="navbar-end">
-                        <a class="navbar-item" href="index.html">Home</a>
-                        <a class="navbar-item" href="results.html">Results</a>
-                        <a class="navbar-item">Recipes</a>
-                    </div>
-                </div>
-            </div>         
+    <section class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-1">Recipe Ready 🍴</h1>
+          <h4 class="is-italic">Results for {recipe that was searched}</h4>
         </div>
+        <div class="column">
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item" href="index.html">Home</a>
+              <a class="navbar-item" href="results.html">Results</a>
+              <a class="navbar-item">Recipes</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-<div class="tile is-ancestor">
-  <div class="tile is-4 is-vertical is-parent">
-    <div class="tile is-child box">
-      <p class="title">{Recipe}</p>
-      <figure class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/640x480.png">
-          </figure>
-      <p> <ul>
-   <li>⏱ {Prep Time}</li>
-   <li>⚡️ {Calories/Serving}</li>
-    <li>#️⃣ {Number of Ingredients}</li>
-   <li>🍽 {Level of Difficulty}</li>
-   <li>🚫 {Dietray Restrictions}</li>
-   </ul></p>
-   </div>
-   </div>
-<div class="tile is-4 is-vertical is-parent">
-    <div class="tile is-child box">
-      <p class="title">{Recipe}</p>
-      <figure class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/640x480.png">
-          </figure>
-      <p> <ul>
-   <li>⏱ {Prep Time}</li>
-   <li>⚡️ {Calories/Serving}</li>
-    <li>#️⃣ {Number of Ingredients}</li>
-   <li>🍽 {Level of Difficulty}</li>
-   <li>🚫 {Dietray Restrictions}</li>
-   </ul></p>
-   </div>
-   </div>
-   <div class="tile is-4 is-vertical is-parent">
-    <div class="tile is-child box">
-      <p class="title">{Recipe}</p>
-      <figure class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/640x480.png">
-          </figure>
-      <p> <ul>
-   <li>⏱ {Prep Time}</li>
-   <li>⚡️ {Calories/Serving}</li>
-    <li>#️⃣ {Number of Ingredients}</li>
-   <li>🍽 {Level of Difficulty}</li>
-   <li>🚫 {Dietray Restrictions}</li>
-   </ul></p>
-   </div>
-   </div>
-  
-</div>
+   
+      <div class="recipe-card card">
+        <div class="columns">
+          <div class="column is-one-third is-paddingless aaa">
+            <div class="card-image">
+              <figure class="image is-2by3">
+                <img
+                  id="recipe-img"
+                  src="./assets/images/card-placeholder.jpg"
+                />
+              </figure>
+            </div>
+          </div>
+          <div
+            class="column card-content is-flex is-flex-direction-column is-align-items-stretch m-4"
+          >
+            <h3 class="is-size-3 mt-1 pb-2">Yogurt Parfait</h3>
+            <div class="columns mt-2 item-box mb-2">
+              <div
+                class="column is-flex is-flex-direction-column is-justify-content-space-around"
+              >
+                <div class="card-item">
+                  <span class="material-symbols-outlined icon">timer</span>
+                  <p id="time">45 mins</p>
+                </div>
+                <div class="card-item">
+                  <span class="material-symbols-outlined icon">bolt</span>
+                  <p id="calories">250 cal/serving</p>
+                </div>
+                <div class="card-item">
+                  <span class="material-symbols-outlined icon">egg</span>
+                  <p id="ingredients">5 ingredients</p>
+                </div>
+              </div>
+              <div
+                class="column is-flex is-flex-direction-column is-justify-content-space-around"
+              >
+                <div class="card-item">
+                  <span class="material-symbols-outlined icon"
+                    >restaurant_menu</span
+                  >
+                  <p id="difficulty">Easy</p>
+                </div>
+                <div class="card-item">
+                  <span class="material-symbols-outlined icon">set_meal</span>
+                  <p id="diet">Vegetarian</p>
+                </div>
+                <div class="card-item">
+                  <span class="material-symbols-outlined icon"
+                    >shopping_cart</span
+                  >
+                  <p id="price">$10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+
     <script src="./assets/script.js"></script>
   </body>
 </html>
