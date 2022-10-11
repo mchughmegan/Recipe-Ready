@@ -156,10 +156,10 @@ function createCard(resultObj) {
   cardDetails(resultObj.id);
 }
 
-function nutritionModal(foodName) {
-  let xremoteuserid = `0`;
-  let detailsUrl = `https://trackapi.nutritionix.com/v2/natural/nutrients`;
-  fetch(detailsUrl, {
+function nutritionInfo(foodName) {
+  let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
+  let nutrientUrl = `https://api.calorieninjas.com/v1/nutrition?query=${foodName}`;
+  fetch(nutrientUrl, {
     method: "GET",
     headers: {
       "x-app-id": `e6864ba9`,
@@ -174,23 +174,11 @@ function nutritionModal(foodName) {
       return response.json();
     })
     .then(function (data) {
-      $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
-      $(`#${recipeId}`)
-        .find("#calories")
-        .text(`${data.nutrition.nutrients[0].amount} calories`);
-      $(`#${recipeId}`)
-        .find("#ingredients")
-        .text(`${data.extendedIngredients.length} ingredients`);
-      $(`#${recipeId}`).find("#servings").text(`${data.servings} servings`);
-      if (data.diets[0]) {
-        $(`#${recipeId}`).find("#diet").text(`${data.diets[0]}`);
-      } else {
-        $(`#${recipeId}`).find("#diet").text(`none`);
-      }
-
-      $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
+      console.log(data);
     });
 }
 
 // Sample call for debugging
 searchApi("pizza");
+
+nutritionInfo("potato");
