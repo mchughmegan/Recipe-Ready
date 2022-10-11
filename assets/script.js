@@ -1,6 +1,9 @@
+
+
+
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `03c3ca82a69c478f97f159115722b77a`; // HIDE THIS LATER
+  let apiKey = ``; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
 
   if (type) {
