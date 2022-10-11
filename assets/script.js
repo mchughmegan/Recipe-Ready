@@ -30,8 +30,10 @@ function searchApi(query, type) {
     });
 }
 
+//search input and categories function
 
-// Gets the details for each recpie
+
+  // Gets the details for each recpie
 function cardDetails(recipeId) {
   let apiKey = `348e55f3282f4fd0a804ca5a758c1d3f`; // HIDE THIS LATER
 
