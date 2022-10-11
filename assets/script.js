@@ -30,8 +30,7 @@ function searchApi(query, type) {
     });
 }
 
-function cardDetails(recipeId)
-{
+function cardDetails(recipeId) {
   let apiKey = ``; // HIDE THIS LATER
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -45,16 +44,20 @@ function cardDetails(recipeId)
     })
     .then(function (data) {
       $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
-      $(`#${recipeId}`).find("#calories").text(`${data.nutrition.nutrients[0].amount} calories`);
-      $(`#${recipeId}`).find("#ingredients").text(`${data.extendedIngredients.length()} ingredients`);
-      console.log()
+      $(`#${recipeId}`)
+        .find("#calories")
+        .text(`${data.nutrition.nutrients[0].amount} calories`);
+      $(`#${recipeId}`)
+        .find("#ingredients")
+        .text(`${data.extendedIngredients.length()} ingredients`);
+      console.log();
       $(`#${recipeId}`).find("#servings").text(`${data.servings} servings`);
-      if(data.diets[0]){
+      if (data.diets[0]) {
         $(`#${recipeId}`).find("#diet").text(`${data.diets[0]}`);
       } else {
         $(`#${recipeId}`).find("#diet").text(`none`);
       }
-      
+
       $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
     });
 }
@@ -68,7 +71,7 @@ function createCard(resultObj) {
   let cardColumns = $("<div>").addClass("columns");
   recipeResult.append(cardColumns);
   let image = $("<div>")
-    .addClass("column is-one-third is-paddingless")
+    .addClass("column is-3by5 is-paddingless")
     .append($("<img>").attr("id", "recipe-img").addClass("card-image"));
   cardColumns.append(image);
   let cardContent = $("<div>")
