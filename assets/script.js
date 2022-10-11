@@ -44,21 +44,23 @@ function cardDetails(recipeId) {
     })
     .then(function (data) {
       $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
+      var roundedCalories = `${data.nutrition.nutrients[0].amount}`;
       $(`#${recipeId}`)
         .find("#calories")
-        .text(`${data.nutrition.nutrients[0].amount} calories`);
+        .text(Math.round(roundedCalories) + ` calories`);
       $(`#${recipeId}`)
         .find("#ingredients")
-        .text(`${data.extendedIngredients.length()} ingredients`);
-      console.log();
+        .text(`${data.extendedIngredients.length} ingredients`);
       $(`#${recipeId}`).find("#servings").text(`${data.servings} servings`);
       if (data.diets[0]) {
         $(`#${recipeId}`).find("#diet").text(`${data.diets[0]}`);
       } else {
         $(`#${recipeId}`).find("#diet").text(`none`);
       }
-
-      $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
+      var roundedPrice = `${data.pricePerServing}`;
+      $(`#${recipeId}`)
+        .find("#price")
+        .text(`$` + Math.ceil(roundedPrice / 100) + `/serving`);
     });
 }
 
