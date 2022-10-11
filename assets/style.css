@@ -15,6 +15,8 @@ input {
 .header {
   background-color: var(--text-color);
   height: 100px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .hero.has-background {
@@ -28,8 +30,8 @@ input {
 
 .footer {
   height: 20px;
-  padding: 3.0rem;
-  padding-top: 1.0rem;
+  padding: 3rem;
+  padding-top: 1rem;
 }
 
 .hero-background {
@@ -56,4 +58,16 @@ input {
 
 .navbar-item:hover {
   color: #142c2d !important;
+}
+
+.subtitle {
+  background-color: white;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 992px) {
+  
 }
