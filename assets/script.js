@@ -32,7 +32,8 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `03c3ca82a69c478f97f159115722b77a`; // HIDE THIS LATER
+  let apiKey = ``; // HIDE THIS LATER
+
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -45,9 +46,10 @@ function cardDetails(recipeId) {
     })
     .then(function (data) {
       $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
+      var roundedCalories = `${data.nutrition.nutrients[0].amount}`;
       $(`#${recipeId}`)
         .find("#calories")
-        .text(`${data.nutrition.nutrients[0].amount} calories`);
+        .text(Math.round(roundedCalories) + ` calories`);
       $(`#${recipeId}`)
         .find("#ingredients")
         .text(`${data.extendedIngredients.length} ingredients`);
@@ -57,8 +59,10 @@ function cardDetails(recipeId) {
       } else {
         $(`#${recipeId}`).find("#diet").text(`none`);
       }
-
-      $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
+      var roundedPrice = `${data.pricePerServing}`;
+      $(`#${recipeId}`)
+        .find("#price")
+        .text(`$` + Math.ceil(roundedPrice / 100) + `/serving`);
     });
 }
 
