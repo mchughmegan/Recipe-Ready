@@ -8,14 +8,13 @@
   --font: "inter", sans-serif;
 }
 
-
 input {
-  width: 600px !important;}
-  
+  width: 600px !important;
+}
+
 .header {
   background-color: var(--text-color);
   height: 100px;
-
 }
 
 .hero.has-background {
@@ -48,4 +47,12 @@ input {
 
 .full-width {
   width: 100%;
+}
+
+.navbar-item {
+  color: white;
+}
+
+.navbar-item:hover {
+  color: #142c2d !important;
 }
