@@ -1,6 +1,6 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `348e55f3282f4fd0a804ca5a758c1d3f`; // HIDE THIS LATER
+  let apiKey = `2e4d8335d1fb4993b8adb2f28fd348e0`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
 
   if (type) {
@@ -83,7 +83,7 @@ function createCard(resultObj) {
       "column card-content is-flex is-flex-direction-column is-align-items-stretch m-4"
     )
     .append(
-      $("<h3>").addClass("is-size-3 mt-1 pb-2").attr("id", "recipe-name")
+      $("<h3>").addClass("is-size-4 mt-1 pb-2 ").attr("id", "recipe-name")
     );
   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
   itemColumns.append(
@@ -162,8 +162,10 @@ function nutritionInfo(foodName) {
   fetch(nutrientUrl, {
     method: "GET",
     headers: {
-      "X-Api-Key": apiKey,
-    }
+      "x-app-id": `e6864ba9`,
+      "x-app-key": `0ed5199703b824585d6ceae466cf2e24`,
+      "x-remote-user-id": `0`,
+    },
   })
     .then(function (response) {
       if (!response.ok) {
