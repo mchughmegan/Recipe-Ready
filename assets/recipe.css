@@ -8,16 +8,23 @@
   --font: "inter", sans-serif;
 }
 
-
 h4 {
-    font-weight: bold;
-    padding-left: 5px;
+  font-weight: bold;
+  padding-left: 5px;
 }
 
-#directions{
-    background-color: var(--accent-color);
+#directions {
+  background-color: var(--accent-color);
 }
 
 #recipe {
   background-color: var(--card-color);
+}
+
+.navbar-item {
+  color: white;
+}
+
+.navbar-item:hover {
+  color: #142c2d !important;
 }
