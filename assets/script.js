@@ -2,73 +2,6 @@ API_KEY = `fdd93af3e93f49288bba2c709b2f9f6a`; // HIDE THIS LATER
 RECIPE_URL = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${API_KEY}`;
 
 
-
-function printRecipeCards(resultObj) {
-    let recipeCard =
-    `<div class="recipe-card card my-5">
-        <div class="columns">
-          <div class="column is-one-third is-paddingless">
-            <div class="card-image">
-              <figure class="image is-2by3">
-                <img
-                  id="recipe-img"
-                  src="./assets/images/card-placeholder.jpg"
-                />
-              </figure>
-            </div>
-          </div>
-          <div
-            class="column card-content is-flex is-flex-direction-column is-align-items-stretch m-4"
-          >
-            <h3 class="is-size-3 mt-1 pb-2">Yogurt Parfait</h3>
-            <div class="columns mt-2 item-box mb-2">
-              <div
-                class="column is-flex is-flex-direction-column is-justify-content-space-around is-narrow"
-              >
-                <div class="card-item">
-                  <span class="material-symbols-outlined icon">
-                  </span>
-                  <p id="time"></p>
-                </div>
-                <div class="card-item">
-                  <span class="material-symbols-outlined icon">
-                  </span>
-                  <p id="calories"></p>
-                </div>
-                <div class="card-item">
-                  <span class="material-symbols-outlined icon">
-                  </span>
-                  <p id="ingredients"></p>
-                </div>
-              </div>
-              <div
-                class="column is-flex is-flex-direction-column is-justify-content-space-around"
-              >
-                <div class="card-item">
-                  <span class="material-symbols-outlined icon">
-                  </span>
-                  <p id="difficulty"></p>
-                </div>
-                <div class="card-item">
-                  <span class="material-symbols-outlined icon">
-                  </span>
-                  <p id="diet"></p>
-                </div>
-                <div class="card-item">
-                  <span class="material-symbols-outlined icon">
-                  </span>
-                  <p id="price">Price</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>`;
-    
-}
-
-
-
-
 fetch(RECIPE_URL, {
     method: 'GET'
 })
@@ -93,9 +26,8 @@ let cardContent = $("<div>")
 let recipeName = $("<h3>").addClass("is-size-3 mt-1 pb-2").text("Recipe name");
 cardContent.append(recipeName);
 let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
-let items = $("<div>")
-    .addClass("column is-flex is-flex-direction-column is-justify-content-space-around is-narrow");
-itemColumns.append(items
+itemColumns.append($("<div>")
+    .addClass("column is-flex is-flex-direction-column is-justify-content-space-around is-narrow")
     .append(
         $("<div>").addClass("card-item")
         .append($("<span>").addClass("material-symbols-outlined").text("timer"))
@@ -111,7 +43,8 @@ itemColumns.append(items
         .append($("<span>").addClass("material-symbols-outlined").text("egg"))
         .append($("<p>").attr("id", "ingredients"))
     ));
-itemColumns.append(items
+itemColumns.append($("<div>")
+    .addClass("column is-flex is-flex-direction-column is-justify-content-space-around is-narrow")
     .append(
         $("<div>").addClass("card-item")
         .append($("<span>").addClass("material-symbols-outlined").text("restaurant_menu"))
@@ -127,10 +60,12 @@ itemColumns.append(items
         .append($("<span>").addClass("material-symbols-outlined").text("shopping_cart"))
         .append($("<p>").attr("id", "price"))
     ));
-
-
-
 cardContent.append(itemColumns);
 cardColumns.append(cardContent);
 $("#recipe-results").append(recipeResult);
-
+$("#time").text("test");
+$("#calories").text("test");
+$("#ingredients").text("test");
+$("#difficulty").text("test");
+$("#diet").text("test");
+$("#price").text("test");
