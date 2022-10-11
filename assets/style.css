@@ -26,9 +26,10 @@ input {
   opacity: 0.3;
 }
 
-.footer,
-.push {
-  height: 40px;
+.footer {
+  height: 20px;
+  padding: 3.0rem;
+  padding-top: 1.0rem;
 }
 
 .hero-background {
