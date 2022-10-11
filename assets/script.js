@@ -1,6 +1,6 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = ``; // HIDE THIS LATER
+  let apiKey = `03c3ca82a69c478f97f159115722b77a`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
 
   if (type) {
@@ -30,8 +30,10 @@ function searchApi(query, type) {
     });
 }
 
+// Gets the details for each recpie
 function cardDetails(recipeId) {
   let apiKey = ``; // HIDE THIS LATER
+
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -73,7 +75,7 @@ function createCard(resultObj) {
   let cardColumns = $("<div>").addClass("columns");
   recipeResult.append(cardColumns);
   let image = $("<div>")
-    .addClass("column is-3by5 is-paddingless")
+    .addClass("column is-one-third is-paddingless")
     .append($("<img>").attr("id", "recipe-img").addClass("card-image"));
   cardColumns.append(image);
   let cardContent = $("<div>")
@@ -152,6 +154,42 @@ function createCard(resultObj) {
   $(`#${resultObj.id}`).find("#recipe-name").text(`${resultObj.title}`);
   $(`#${resultObj.id}`).find("#recipe-img").attr("src", resultObj.image);
   cardDetails(resultObj.id);
+}
+
+function nutritionModal(foodName) {
+  let xremoteuserid = `0`;
+  let detailsUrl = `https://trackapi.nutritionix.com/v2/natural/nutrients`;
+  fetch(detailsUrl, {
+    method: "GET",
+    headers: {
+      'x-app-id': `e6864ba9`,
+      'x-app-key': `0ed5199703b824585d6ceae466cf2e24`,
+      'x-remote-user-id': `0` 
+    }
+  })
+    .then(function (response) {
+      if (!response.ok) {
+        throw response.json();
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
+      $(`#${recipeId}`)
+        .find("#calories")
+        .text(`${data.nutrition.nutrients[0].amount} calories`);
+      $(`#${recipeId}`)
+        .find("#ingredients")
+        .text(`${data.extendedIngredients.length} ingredients`);
+      $(`#${recipeId}`).find("#servings").text(`${data.servings} servings`);
+      if (data.diets[0]) {
+        $(`#${recipeId}`).find("#diet").text(`${data.diets[0]}`);
+      } else {
+        $(`#${recipeId}`).find("#diet").text(`none`);
+      }
+
+      $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
+    });
 }
 
 // Sample call for debugging

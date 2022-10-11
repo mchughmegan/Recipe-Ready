@@ -23,6 +23,7 @@
 
 .card-image {
     height: 100%;
+    object-fit: cover;
 }
 
 .recipe-card {
@@ -44,6 +45,8 @@
 .recipe-card >* p {
     margin-left: 0.8rem;
     font-size: 1.25rem;
+    text-overflow: clip;
+    flex-wrap: nowrap;
 }
 
 .columns {
