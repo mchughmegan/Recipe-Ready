@@ -21,6 +21,10 @@
     align-items: center;
 }
 
+.card-image {
+    height: 100%;
+}
+
 .recipe-card {
     height: 20%;
 }
