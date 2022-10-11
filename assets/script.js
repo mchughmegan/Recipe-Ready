@@ -1,9 +1,10 @@
-function searchApi(query, category) {
-  let apiKey = `a696c5ce649c4449b5b6afa1f5454ca9`; // HIDE THIS LATER
+// Gets the list of recipes based on search query and type
+function searchApi(query, type) {
+  let apiKey = ``; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
 
-  if (category) {
-    recipeUrl = `${recipeUrl}&type=${category}`;
+  if (type) {
+    recipeUrl = `${recipeUrl}&type=${type}`;
   }
 
   let searchUrl = `${recipeUrl}&query=${query}`;
@@ -29,9 +30,10 @@ function searchApi(query, category) {
     });
 }
 
+// Gets the details for each recpie
 function cardDetails(recipeId)
 {
-  let apiKey = `a696c5ce649c4449b5b6afa1f5454ca9`; // HIDE THIS LATER
+  let apiKey = ``; // HIDE THIS LATER
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -45,14 +47,19 @@ function cardDetails(recipeId)
     .then(function (data) {
       $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
       $(`#${recipeId}`).find("#calories").text(`${data.nutrition.nutrients[0].amount} calories`);
-      $(`#${recipeId}`).find("#ingredients").text(`${data.extendedIngredients.length()} ingredients`);
-      console.log()
+      $(`#${recipeId}`).find("#ingredients").text(`${data.extendedIngredients.length} ingredients`);
       $(`#${recipeId}`).find("#servings").text(`${data.servings} servings`);
-      $(`#${recipeId}`).find("#diet").text(`${data.diets[0]} ingredients`);
-      $(`#${recipeId}`).find("#price").text(`${data.pricePerServing}/serving`);
+      if(data.diets[0]){
+        $(`#${recipeId}`).find("#diet").text(`${data.diets[0]}`);
+      } else {
+        $(`#${recipeId}`).find("#diet").text(`none`);
+      }
+      
+      $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
     });
   }
 
+// Creates the cards based on each search object
 function createCard(resultObj) {
   console.log(resultObj);
   let recipeResult = $("<div>").addClass("recipe-card card my-5").attr("id", resultObj.id);
@@ -142,4 +149,5 @@ function createCard(resultObj) {
   cardDetails(resultObj.id);
 };
 
+// Sample call for debugging
 searchApi("pizza");
