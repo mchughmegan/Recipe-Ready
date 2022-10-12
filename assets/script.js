@@ -24,7 +24,6 @@ function searchApi(query, type) {
         $("#recipe-results").text("No results.");
       } else {
         for (let i = 0; i < data.results.length; i++) {
-          console.log("creating card")
           createCard(data.results[i]);
         }
       }
@@ -178,10 +177,9 @@ function nutritionInfo(foodName) {
 }
 
 // Sample call for debugging
+// searchApi("egg");
+
 $("#searchButton").on("click", function (event){
-  
-  console.log($("#recipeQuery").val());
-  searchApi($("#recipeQuery").val(), $("#dropdownOption").val());
   event.preventDefault();
-  window.location.href = "results.html";
+  searchApi($("#recipeQuery").val(), $("#dropdownOption").val());
 })
