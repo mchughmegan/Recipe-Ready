@@ -1,3 +1,6 @@
+
+
+
 // Gets the list of recipes based on search query and type
 function searchApi(event , type) {
   event.preventDefault()
@@ -6,6 +9,7 @@ function searchApi(event , type) {
   console.log(query);
 
   let apiKey = `e3bc82b9e72a439d85be6f1d92d72601`; // HIDE THIS LATER
+  
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
 
   if (type) {
@@ -43,7 +47,7 @@ function searchApi(event , type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `348e55f3282f4fd0a804ca5a758c1d3f`; // HIDE THIS LATER
+  let apiKey = ``; // HIDE THIS LATER
 
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
