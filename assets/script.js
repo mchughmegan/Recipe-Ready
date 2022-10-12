@@ -1,8 +1,9 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `4d14ade5c4044b5698576532f89f1dda`; // HIDE THIS LATER
+  let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
-  console.log("api called");
+  $("#recipe-results").empty();
+  console.log(`Searching for ${query} in the ${type} option.`);
   if (type) {
     recipeUrl = `${recipeUrl}&type=${type}`;
   }
@@ -21,7 +22,7 @@ function searchApi(query, type) {
     .then(function (data) {
       if (!data.results.length) {
         console.log("No results.");
-        $("#recipe-results").text("No results.");
+        $("#recipe-results").append($("<div>").addClass("conainer text-center m-auto pb-4 is-size-4 no-results").text("No results."));
       } else {
         for (let i = 0; i < data.results.length; i++) {
           createCard(data.results[i]);
@@ -32,8 +33,8 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `4d14ade5c4044b5698576532f89f1dda`; // HIDE THIS LATER
-  console.log("api called");
+  let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
+  console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -83,7 +84,9 @@ function createCard(resultObj) {
       "column is-three-fifths card-content is-flex is-flex-direction-column m-4"
     )
     .append(
-      $("<div>").addClass("is-size-4 mt-1 pb-2 recipe-name-box").attr("id", "recipe-name")
+      $("<div>")
+        .addClass("is-size-4 mt-1 pb-2 recipe-name-box")
+        .attr("id", "recipe-name")
     );
   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
   itemColumns.append(
@@ -182,4 +185,8 @@ function nutritionInfo(foodName) {
 $("#searchButton").on("click", function (event) {
   event.preventDefault();
   searchApi($("#recipeQuery").val(), $("#dropdownOption").val());
+  console.log($("#recipeQuery").val())
+  setTimeout(function () {
+    document.getElementById("recipe-results").scrollIntoView();
+  }, 1500);
 });
