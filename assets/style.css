@@ -68,11 +68,38 @@ input {
   border-radius: 15px;
 }
 
-@media screen and (max-width: 992px) {
+/* @media screen and (max-width: 1408px) {
+  .navbar-menu {
+    display: contents;
+  }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1216px) {
+  .navbar-menu {
+    display: contents;
+    justify-content: left;
+  }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1024px) {
+  .navbar-menu {
+    display: contents;
+    justify-content: left;
+  }
+  header {
+    height: 200px;
+  }
 }
+
+@media screen and (max-width: 1023px) {
+  .subtitle {
+    display: none;
+  }
+  .navbar-menu {
+    display: contents;
+    justify-content: left;
+  }
+  header {
+    height: 200px;
+  }
+} */
