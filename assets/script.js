@@ -35,7 +35,7 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = ``; // HIDE THIS LATER
+  let apiKey = `348e55f3282f4fd0a804ca5a758c1d3f`; // HIDE THIS LATER
 
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -86,7 +86,7 @@ function createCard(resultObj) {
       "column card-content is-flex is-flex-direction-column is-align-items-stretch m-4"
     )
     .append(
-      $("<h3>").addClass("is-size-3 mt-1 pb-2").attr("id", "recipe-name")
+      $("<h3>").addClass("is-size-4 mt-1 pb-2 ").attr("id", "recipe-name")
     );
   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
   itemColumns.append(
@@ -159,16 +159,16 @@ function createCard(resultObj) {
   cardDetails(resultObj.id);
 }
 
-function nutritionModal(foodName) {
-  let xremoteuserid = `0`;
-  let detailsUrl = `https://trackapi.nutritionix.com/v2/natural/nutrients`;
-  fetch(detailsUrl, {
+function nutritionInfo(foodName) {
+  let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
+  let nutrientUrl = `https://api.calorieninjas.com/v1/nutrition?query=${foodName}`;
+  fetch(nutrientUrl, {
     method: "GET",
     headers: {
-      'x-app-id': `e6864ba9`,
-      'x-app-key': `0ed5199703b824585d6ceae466cf2e24`,
-      'x-remote-user-id': `0` 
-    }
+      "x-app-id": `e6864ba9`,
+      "x-app-key": `0ed5199703b824585d6ceae466cf2e24`,
+      "x-remote-user-id": `0`,
+    },
   })
     .then(function (response) {
       if (!response.ok) {
@@ -177,23 +177,11 @@ function nutritionModal(foodName) {
       return response.json();
     })
     .then(function (data) {
-      $(`#${recipeId}`).find("#time").text(`${data.readyInMinutes} min`);
-      $(`#${recipeId}`)
-        .find("#calories")
-        .text(`${data.nutrition.nutrients[0].amount} calories`);
-      $(`#${recipeId}`)
-        .find("#ingredients")
-        .text(`${data.extendedIngredients.length} ingredients`);
-      $(`#${recipeId}`).find("#servings").text(`${data.servings} servings`);
-      if (data.diets[0]) {
-        $(`#${recipeId}`).find("#diet").text(`${data.diets[0]}`);
-      } else {
-        $(`#${recipeId}`).find("#diet").text(`none`);
-      }
-
-      $(`#${recipeId}`).find("#price").text(`$${data.pricePerServing}/serving`);
+      console.log(data);
     });
 }
 
 // Sample call for debugging
 searchApi("pizza");
+
+nutritionInfo("potato");
