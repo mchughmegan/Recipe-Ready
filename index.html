@@ -21,6 +21,7 @@
     <title>Recipe Ready</title>
   </head>
   <body>
+    <!-- Navigation -->
     <nav class="container is-fluid header">
       <div class="columns">
         <div class="column">
@@ -37,6 +38,7 @@
         </div>
       </div>
     </nav>
+    <!-- Hero -->
     <div class="hero is-fullheight">
       <img
         alt="food"
@@ -50,12 +52,13 @@
           <div class="subtitle">
             <strong>Recipes ready for your time and budget</strong>
           </div>
+          <!-- Search Bar -->
           <div class="">
             <form
               id="searchRecipe"
-              class="full-width is-flex is-flex-direction-row is-flex-wrap-nowrap categories"
+              class="full-width is-flex is-flex-direction-row categories"
             >
-              <span>
+              <span id="searchBar">
                 <label class="form-label" for="recipeName"></label>
                 <input
                   id="recipeQuery"
@@ -63,6 +66,7 @@
                   placeholder="Find a recipe..."
                 />
               </span>
+              <!-- Dropdown -->
               <div class="dropdown is-hoverable is-rounded">
                 <div class="dropdown-trigger">
                   <button
@@ -70,6 +74,7 @@
                     aria-haspopup="true"
                     aria-controls="dropdown-menu3"
                   >
+                    <!-- Dropdown Categories -->
                     <span class="is-inline">Categories</span>
                     <span class="icon is-small">
                       <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -105,6 +110,7 @@
                 </div>
               </div>
               <span>
+                <!-- Search -->
                 <button
                   id="searchButton"
                   class="button is-rounded has-text-white has-background-warning-dark is-inline"

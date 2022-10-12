@@ -69,31 +69,39 @@ input {
 }
 
 @media screen and (max-width: 1408px) {
-  /* .navbar-menu {
-    display: contents;
-  } */
+  #searchRecipe {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 1216px) {
-  /* .navbar-menu {
-    display: contents;
-    justify-content: left;
-  } */
+  #searchRecipe {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-  /* .navbar-menu {
-    display: contents;
-    justify-content: left;
-  } */
+  #searchRecipe {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 1023px) {
   .subtitle {
     display: none;
   }
-  /* .navbar-menu {
-    display: contents;
-    justify-content: left;
-  } */
+  #searchRecipe {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #searchRecipe {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #searchBar {
+    width: 300px;
+  }
 }
