@@ -1,3 +1,6 @@
+
+
+
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
   let apiKey = ``; // HIDE THIS LATER
