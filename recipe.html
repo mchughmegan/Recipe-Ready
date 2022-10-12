@@ -104,6 +104,22 @@
         </div>
       </div>
     </section>
+    <!-- debugging for ingredient info feature -->
+    <div class="container is-flex is-flex-direction-row is-align-items-center">
+      <li id="ingredient-name" class="ingredient mr-2">.25 lb Potato</li>
+      <button id="nutrition-button" class="button is-rounded is-narrow is-info p-1 is-small">
+        <span class="material-symbols-outlined">info</span>
+      </button>
+    </div>
+    <div id="nutrient-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <ul id="nutrition-info" class="">
+        </ul>
+      </div>
+      <button id="close-modal" class="modal-close is-large" aria-label="close"></button> 
+    </div>
+
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
@@ -118,7 +134,7 @@
         </p>
       </div>
     </footer>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>
