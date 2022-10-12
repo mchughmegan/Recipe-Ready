@@ -176,11 +176,12 @@ function nutritionInfo(foodName) {
     })
     .then(function (data) {
       console.log(data);
+      $("#nutrition-info").append($("<li>").text(data.items[0].calories)); // Creates a <li> element with the food's calories
     });
 }
 
 // Sample call for debugging
-// searchApi("egg");
+
 
 $("#searchButton").on("click", function (event) {
   event.preventDefault();
@@ -190,3 +191,13 @@ $("#searchButton").on("click", function (event) {
     document.getElementById("recipe-results").scrollIntoView();
   }, 1500);
 });
+
+$("#nutrition-button").on("click", function (event) {
+  event.preventDefault();
+  $("#nutrient-modal").addClass("is-active")
+  nutritionInfo($("#nutrition-button").siblings("#ingredient-name").text());
+});
+
+$("#close-modal").on("click", function() {
+  $("#nutrient-modal").removeClass("is-active")
+})

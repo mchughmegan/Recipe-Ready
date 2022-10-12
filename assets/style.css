@@ -8,6 +8,10 @@
   --font: "inter", sans-serif;
 }
 
+body {
+  background-color: var(--bg-color);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -58,6 +62,11 @@ form {
   width: 100%;
 }
 
+.ingredient {
+  font-family: var(--font);
+  color: var(--text-color);
+}
+
 .full-width {
   width: 100%;
 }
@@ -87,6 +96,10 @@ form {
   color: var(--text-color);
 }
 
+#nutrition-info {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
 
 @media screen and (max-width: 1408px) {
   #searchRecipe {
