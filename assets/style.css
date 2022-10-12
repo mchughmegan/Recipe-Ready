@@ -59,6 +59,9 @@ input {
 .navbar-item:hover {
   color: #142c2d !important;
 }
+.navbar-menu {
+  margin-top: 30px;
+}
 
 .subtitle {
   background-color: white;
@@ -94,6 +97,21 @@ input {
     display: flex;
     flex-wrap: wrap;
   }
+  #rr-icon {
+    display: none;
+  }
+  .navbar-menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: #142c2d;
+  }
+  .header {
+    height: 150px;
+  }
+  .title {
+    margin-bottom: 0;
+  }
 }
 
 @media screen and (max-width: 640px) {
@@ -103,5 +121,20 @@ input {
   }
   #searchBar {
     width: 300px;
+  }
+  #rr-icon {
+    display: none;
+  }
+  .navbar-menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: #142c2d;
+  }
+  .header {
+    height: 250px;
+  }
+  .title {
+    margin-bottom: 0;
   }
 }
