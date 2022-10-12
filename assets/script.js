@@ -1,17 +1,8 @@
-
-
-
 // Gets the list of recipes based on search query and type
-function searchApi(event , type) {
-  event.preventDefault()
-
-  let query = document.getElementById('recipeQuery').value;
-  console.log(query);
-
-  let apiKey = `e3bc82b9e72a439d85be6f1d92d72601`; // HIDE THIS LATER
-  
+function searchApi(query, type) {
+  let apiKey = `1a741d2826bf4a8597389544a186ea21`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
-
+  console.log("api called");
   if (type) {
     recipeUrl = `${recipeUrl}&type=${type}`;
   }
@@ -32,13 +23,8 @@ function searchApi(event , type) {
         console.log("No results.");
         $("#recipe-results").text("No results.");
       } else {
-
-
-        localStorage.setItem('recipeData', data.results)
-
-        window.location.href = 'results.html'
-
-                for (let i = 0; i < data.results.length; i++) {
+        for (let i = 0; i < data.results.length; i++) {
+          console.log("creating card")
           createCard(data.results[i]);
         }
       }
@@ -47,8 +33,8 @@ function searchApi(event , type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = ``; // HIDE THIS LATER
-
+  let apiKey = `1a741d2826bf4a8597389544a186ea21`; // HIDE THIS LATER
+  console.log("api called");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -98,7 +84,7 @@ function createCard(resultObj) {
       "column card-content is-flex is-flex-direction-column is-align-items-stretch m-4"
     )
     .append(
-      $("<h3>").addClass("is-size-4 mt-1 pb-2 ").attr("id", "recipe-name")
+      $("<h3>").addClass("is-size-3 mt-1 pb-2").attr("id", "recipe-name")
     );
   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
   itemColumns.append(
@@ -177,10 +163,8 @@ function nutritionInfo(foodName) {
   fetch(nutrientUrl, {
     method: "GET",
     headers: {
-      "x-app-id": `e6864ba9`,
-      "x-app-key": `0ed5199703b824585d6ceae466cf2e24`,
-      "x-remote-user-id": `0`,
-    },
+      "X-Api-Key": apiKey,
+    }
   })
     .then(function (response) {
       if (!response.ok) {
@@ -194,8 +178,10 @@ function nutritionInfo(foodName) {
 }
 
 // Sample call for debugging
-searchApi("pizza");
-
-nutritionInfo("potato");
-
-document.getElementById('searchButton').addEventListener('click', searchApi)
+$("#searchButton").on("click", function (event){
+  
+  console.log($("#recipeQuery").val());
+  searchApi($("#recipeQuery").val(), $("#dropdownOption").val());
+  event.preventDefault();
+  window.location.href = "results.html";
+})
