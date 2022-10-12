@@ -185,3 +185,5 @@ function nutritionInfo(foodName) {
 searchApi("pizza");
 
 nutritionInfo("potato");
+
+document.getElementById('searchButton').addEventListener('click', searchApi)
