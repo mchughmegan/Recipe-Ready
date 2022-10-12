@@ -1,6 +1,11 @@
 // Gets the list of recipes based on search query and type
-function searchApi(query, type) {
-  let apiKey = `2e4d8335d1fb4993b8adb2f28fd348e0`; // HIDE THIS LATER
+function searchApi(event , type) {
+  event.preventDefault()
+
+  let query = document.getElementById('recipeQuery').value;
+  console.log(query);
+
+  let apiKey = `e3bc82b9e72a439d85be6f1d92d72601`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
 
   if (type) {
@@ -23,13 +28,18 @@ function searchApi(query, type) {
         console.log("No results.");
         $("#recipe-results").text("No results.");
       } else {
-        for (let i = 0; i < data.results.length; i++) {
+
+
+        localStorage.setItem('recipeData', data.results)
+
+        window.location.href = 'results.html'
+
+                for (let i = 0; i < data.results.length; i++) {
           createCard(data.results[i]);
         }
       }
     });
 }
-
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
@@ -183,3 +193,5 @@ function nutritionInfo(foodName) {
 searchApi("pizza");
 
 nutritionInfo("potato");
+
+document.getElementById('searchButton').addEventListener('click', searchApi)
