@@ -34,19 +34,20 @@
     color: var(--text-color);
     background-color: var(--card-color);
 }
-  
-.recipe-card h3 {
-    font-family: var(--header-font);
-    color: var(--text-color);
-    border-bottom: 2px solid var(--text-color);
-    width: fit-content;
-}
 
 .recipe-card >* p {
     margin-left: 0.8rem;
     font-size: 1.25rem;
-    text-overflow: clip;
-    flex-wrap: nowrap;
+}
+
+.recipe-name-box {
+    font-family: var(--header-font);
+    color: var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .columns {
