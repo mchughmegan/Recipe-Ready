@@ -58,6 +58,21 @@
     height: 100%;
 }
 
+.is-link {
+    color: var(--text-color);
+    background-color: var(--btn-color);
+    border: 2px solid var(--text-color);
+    border-radius: 25px;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.is-link:hover{
+    color: var(--bg-color);
+    border-color: var(--bg-color);
+    transition: all 0.3s ease-in-out;
+}
+
 #recipe-img {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
