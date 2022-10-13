@@ -103,7 +103,7 @@ function createCard(resultObj) {
         .addClass("is-size-4 mt-1 pb-2 recipe-name-box")
         .attr("id", "recipe-name")
     );
-  
+
   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
   itemColumns.append(
     $("<div>")
@@ -175,10 +175,14 @@ function createCard(resultObj) {
   cardDetails(resultObj.id);
   cardContent.append(
     $("<button>")
-      .addClass("is-flex is-flex-direction-row is-justify-content-end btn is-link recipe-page-button")
+      .addClass(
+        "is-flex is-flex-direction-row is-justify-content-end btn is-link recipe-page-button"
+      )
       .attr("id", resultObj.id)
       .append(
-        $("<span>").addClass("material-symbols-outlined p-2").text("open_in_full")
+        $("<span>")
+          .addClass("material-symbols-outlined p-2")
+          .text("open_in_full")
       )
   );
 }
@@ -241,7 +245,6 @@ function loadRecipePage(recipeId) {
       localStorage.setItem("steps-list", data.instructions);
     });
 }
-
 
 // function recipeDetails(recipeId) {
 //   let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
@@ -438,6 +441,10 @@ loadRecipePage(640636);
 $("#recipe-description").html(localStorage.getItem("recipe-description"));
 
 $(document).on("click", ".recipe-page-button", function () {
+  // loadRecipePage($());
+  // need help here with getting id of clicked button
+  console.log("help");
+});
   loadRecipePage(this.id);
   // need help here with getting id of clicked button
   console.log(this.id);
