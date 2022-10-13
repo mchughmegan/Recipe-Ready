@@ -136,17 +136,16 @@ form {
 }
 
 @media screen and (max-width: 1023px) {
-  .subtitle {
-    display: none;
-  }
   .navbar-menu {
     display: block;
     margin: 0;
     padding: 0;
     background-color: #142c2d;
+    transition: ease all 0.5s;
   }
   .header {
-    height: 150px;
+    height: 250px;
+    transition: ease all 0.5s;
   }
   .title {
     margin-bottom: 0;
@@ -165,30 +164,50 @@ form {
 }
 
 @media screen and (max-width: 640px) {
+  .subtitle {
+    display: none;
+  }
   .navbar-menu {
     display: block;
     margin: 0;
     padding: 0;
     background-color: #142c2d;
+    transition: ease all 0.5s;
   }
   .header {
     height: 250px;
+    transition: ease all 0.5s;
   }
   .title {
     margin-bottom: 0;
+    transition: ease all 0.5s;
   }
   #searchRecipe {
     display: flex;
     flex-wrap: wrap;
+    transition: ease all 0.5s;
   }
   #searchBar {
     width: 300px;
+    transition: ease all 0.5s;
   }
   #rr-icon {
     display: none;
+    transition: ease all 0.5s;
   }
   #recipe-name {
     display: flex;
     flex-wrap: wrap;
+    transition: ease all 0.5s;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .subtitle {
+    display: none;
+  }
+  .header {
+    height: 300px;
+    transition: ease all 0.5s;
   }
 }
