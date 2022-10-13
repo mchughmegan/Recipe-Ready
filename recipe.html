@@ -51,47 +51,52 @@
           >
             <p class="title m-auto pb-5" id="recipe-title"></p>
             <figure class="image is-3by1">
-              <img src="https://bulma.io/images/placeholders/640x480.png" />
+              <img id="recipe-page-img" src="https://bulma.io/images/placeholders/640x480.png" />
             </figure>
 
             <!-- Quick look recipe info -->
             <div
-              class="is-flex is-flex-direction-row content is-justify-content-space-around m-auto"
+              class="is-flex is-flex-direction-row content is-align-items-center is-justify-content-space-around m-auto"
             >
-              <span class="card-item p-3">
-                <span class="material-symbols-outlined icon is-inline"
+              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
+                <span class="material-symbols-outlined icon"
                   >timer</span
                 >
-                <p class="is-inline" id="time">45 mins</p>
+                <p class="ml-2" id="recipe-page-time">45 mins</p>
               </span>
-              <span class="card-item p-3">
-                <span class="material-symbols-outlined icon is-inline"
+              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
+                <span class="material-symbols-outlined icon"
                   >bolt</span
                 >
-                <p class="is-inline" id="calories">250 cal/serving</p>
+                <p class="ml-2" id="recipe-page-calories">250 cal/serving</p>
               </span>
-              <span class="card-item p-3">
-                <span class="material-symbols-outlined icon is-inline"
+              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
+                <span class="material-symbols-outlined icon"
                   >egg</span
                 >
-                <p class="is-inline" id="ingredients">5 ingredients</p>
+                <p class="ml-2" id="recipe-page-ingredients">5 ingredients</p>
               </span>
 
-              <span class="card-item p-3">
-                <span class="material-symbols-outlined icon is-inline"
+              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
+                <span class="material-symbols-outlined icon"
                   >restaurant_menu</span
                 >
-                <p class="is-inline" id="difficulty">Easy</p>
+                <p class="ml-2" id="recipe-page-servings">Easy</p>
               </span>
-              <span class="card-item p-3">
-                <span class="material-symbols-outlined icon is-inline"
+              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
+                <span class="material-symbols-outlined icon"
                   >set_meal</span
                 >
-                <p class="is-inline" id="diet">Vegetarian</p>
+                <p class="ml-2" id="recipe-page-diet">Vegetarian</p>
               </span>
             </div>
-            <!-- Recipe Instructions -->
+            <!-- Recipe Description -->
             <div class="is-flex is-flex-direction-column" id="directions">
+              <h4>About This Recipe</h4>
+              <p id="recipe-description"></p>
+            </div>
+            <!-- Recipe Instructions -->
+            <div class="is-flex is-flex-direction-column mt-4" id="directions">
               <h4>Step-by-Step Recipe</h4>
               <ol class="ml-5">
                 <li class="p-2"></li>
@@ -100,18 +105,20 @@
                 <li class="p-2"></li>
               </ol>
             </div>
+            <!-- Recipe Ingredients list -->
+            <div class="is-flex is-flex-direction-column mt-4" id="ingredients-list">
+              <h4>Ingredients List</h4>
+              <ul class="ml-5">
+                <!-- The addIngredient function will generate the list of 
+                  ingredients with their respective nutrition modals -->
+              </ol>
+            </div>
           </article>
         </div>
       </div>
     </section>
-    <!-- debugging for ingredient info feature -->
-    <div class="container is-flex is-flex-direction-row is-align-items-center">
-      <li id="ingredient-name" class="ingredient mr-2">.25 lb Potato</li>
-      <button id="nutrition-button" class="button is-rounded is-narrow is-info p-1 is-small">
-        <span class="material-symbols-outlined">info</span>
-      </button>
-    </div>
 
+    <!-- Nutrition modal -->
     <div id="nutrient-modal" class="modal">
       <div class="modal-background"></div>
       <div class="modal-card is-narrow">

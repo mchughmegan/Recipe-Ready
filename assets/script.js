@@ -1,6 +1,6 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
+  let apiKey = `6b9b77d0cd674ea2b8488620084cc71a`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
   $("#recipe-results").empty();
   console.log(`Searching for ${query} in the ${type} option.`);
@@ -39,7 +39,7 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
+  let apiKey = `6b9b77d0cd674ea2b8488620084cc71a`; // HIDE THIS LATER
   console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -52,6 +52,7 @@ function cardDetails(recipeId) {
       return response.json();
     })
     .then(function (data) {
+      console.log(data);
       var readyInMinutes = `${data.readyInMinutes}`;
       $(`#${recipeId}`)
         .find("#time")
@@ -78,12 +79,6 @@ function cardDetails(recipeId) {
       $(`#${recipeId}`)
         .find("#price")
         .text(`$` + Math.ceil(roundedPrice / 100) + `/serving`);
-      // localStorage.setItem(`roundedCalories`, JSON.stringify(roundedCalories));
-      // localStorage.setItem(`roundedPrice`, JSON.stringify(roundedPrice));
-      // localStorage.setItem(`readyInMinutes`, JSON.stringify(readyInMinutes));
-      // localStorage.setItem(`ingredients`, JSON.stringify(ingredients));
-      // localStorage.setItem(`servings`, JSON.stringify(servings));
-      // localStorage.setItem(`diets`, JSON.stringify(diets));
     });
 }
 
@@ -177,6 +172,45 @@ function createCard(resultObj) {
   $(`#${resultObj.id}`).find("#recipe-name").text(`${resultObj.title}`);
   $(`#${resultObj.id}`).find("#recipe-img").attr("src", resultObj.image);
   cardDetails(resultObj.id);
+}
+
+// Function to parse through ingredient array and create a list item
+function addIngredient(ingredientName) {
+  $("<div>")
+    .addClass("is-flex is-flex-direction-row is-align-items-center")
+    .append(
+      $("<li>")
+        .attr("id", `ingredient-name`)
+        .addClass("mr-2")
+        .text(`${ingredientName}`)
+    )
+    .append(
+      $("<button>")
+        .attr("id", "nutrition-button")
+        .addClass("button is-rounded is-narrow is-info p-1 is-small")
+        .append($("<span>").addClass("material-symbols-outlined").text("info"))
+    );
+}
+
+// Calls the recipe api, then saves the necessary information to local storage to that it can be loaded on to the recipe page.
+function loadRecipePage(recipeId) {
+  let apiKey = `6b9b77d0cd674ea2b8488620084cc71a`; // HIDE THIS LATER
+  console.log("Card Created");
+  let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
+  fetch(detailsUrl, {
+    method: "GET",
+  })
+    .then(function (response) {
+      if (!response.ok) {
+        throw response.json();
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      // Stores the summary into the local storage variable "recipe-description"
+      localStorage.setItem("recipe-description", data.summary);
+    });
 }
 
 // function recipeDetails(recipeId) {
@@ -330,7 +364,9 @@ function nutritionInfo(foodName) {
     })
     .then(function (data) {
       console.log(data);
-      $("#modal-title").text(`${$("#ingredient-name").text()} Nutrition information`)
+      $("#modal-title").text(
+        `${$("#ingredient-name").text()} Nutrition information`
+      );
       $("#cals").text(data.items[0].calories);
       $("#carbs").text(data.items[0].carbohydrates_total_g);
       $("#cholesterol").text(data.items[0].cholesterol_mg);
@@ -341,7 +377,7 @@ function nutritionInfo(foodName) {
       $("#protein").text(data.items[0].protein_g);
       $("#sugar").text(data.items[0].sugar_g);
       $("#sodium").text(data.items[0].sodium_mg);
-      console.log(data.items[0].calories)
+      console.log(data.items[0].calories);
     });
 }
 
@@ -363,3 +399,9 @@ $("#nutrition-button").on("click", function (event) {
 $("#close-modal").on("click", function () {
   $("#nutrient-modal").removeClass("is-active");
 });
+
+// Call this to debug the load recipe page function
+// loadRecipePage(640636);
+
+// Testing the implementation of local storage into the recipe page
+$("#recipe-description").html(localStorage.getItem("recipe-description"));

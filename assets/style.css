@@ -62,11 +62,6 @@ form {
   width: 100%;
 }
 
-.ingredient {
-  font-family: var(--font);
-  color: var(--text-color);
-}
-
 .full-width {
   width: 100%;
 }
@@ -96,6 +91,11 @@ form {
   color: var(--text-color);
 }
 
+.recipe-page-item {
+  color: var(--text-color);
+  font-family: var(--font);
+}
+
 #nutrition-info {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -109,6 +109,11 @@ form {
 
 #modal-title {
   font-family: var(--header-font);
+  color: var(--text-color);
+}
+
+#ingredient-name {
+  font-family: var(--font);
   color: var(--text-color);
 }
 
