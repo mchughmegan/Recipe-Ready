@@ -1,6 +1,6 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `2e4d8335d1fb4993b8adb2f28fd348e0`; // HIDE THIS LATER
+  let apiKey = `4541c67ec108489b83541b6386913f6e`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
   $("#recipe-results").empty();
   console.log(`Searching for ${query} in the ${type} option.`);
@@ -39,7 +39,7 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `2e4d8335d1fb4993b8adb2f28fd348e0`; // HIDE THIS LATER
+  let apiKey = `4541c67ec108489b83541b6386913f6e`; // HIDE THIS LATER
   console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -207,7 +207,7 @@ function addIngredient(ingredientName) {
 
 // Calls the recipe api, then saves the necessary information to local storage to that it can be loaded on to the recipe page.
 function loadRecipePage(recipeId) {
-  let apiKey = `2e4d8335d1fb4993b8adb2f28fd348e0`; // HIDE THIS LATER
+  let apiKey = `0db2a7a699f24bc3932133b5b7b54eaa`; // HIDE THIS LATER
   console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -420,13 +420,8 @@ $("#close-modal").on("click", function () {
 // Testing the implementation of local storage into the recipe page
 $("#recipe-description").html(localStorage.getItem("recipe-description"));
 
-var recipePageButton = document.querySelector(".recipe-page-button");
-recipePageButton.addEventListener("click", function () {
+$(document).on("click", ".recipe-page-button", function () {
+  // loadRecipePage($());
+  // need help here with getting id of clicked button
   console.log("help");
 });
-
-// $(document).on("click", ".recipe-page-button", function () {
-//   // loadRecipePage($());
-//   // need help here with getting id of clicked button
-//   console.log("help");
-// });
