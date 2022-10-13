@@ -2,7 +2,7 @@
 
 ## Description
 
-Have you ever planned on making a recipe only to find out at the grocery store that the items you do not have on hand are out of your budget for the week? Enter Recipe Ready. Recipe Ready uses two APIs, Spoonacular and Calorie Ninjas, with the framework of Bulma, to solve your recipe making decisions (and budget!), before you get to the grocery store. 
+Have you ever planned on making a recipe only to find out at the grocery store that the items you do not have on hand are out of your budget for the week? Enter Recipe Ready. Recipe Ready uses two APIs, Spoonacular and Calorie Ninjas, with the framework of Bulma, to solve your recipe making decisions (and budget!), before you get to the grocery store. Additionally technologies that helped bring Recipe Ready to your device include Google Fonts, jQuery, Trello, Figma, Pexels, Google Docs, and Google Slides.
 
 ## Usage
 When the user enters the website, https://mchughmegan.github.io/Recipe-Ready/, they will be able to input a search term and choose from meal categories to refine their search. 
