@@ -24,7 +24,7 @@ function searchApi(query, type) {
         console.log("No results.");
         $("#recipe-results").append(
           $("<div>")
-            .addClass("conainer text-center m-auto pb-4 is-size-4 no-results")
+            .addClass("container text-center m-auto pb-4 is-size-4 no-results")
             .text("No results.")
         );
       } else {
@@ -217,6 +217,7 @@ function loadRecipePage(recipeId) {
 //   let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
 //   console.log("Recipe Created");
 //   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
+//   $(`#recipe-page`).empty();
 //   fetch(detailsUrl, {
 //     method: "GET",
 //   })
@@ -253,99 +254,99 @@ function loadRecipePage(recipeId) {
 //       $(`#${recipeId}`)
 //         .find("#price")
 //         .text(`$` + Math.ceil(roundedPrice / 100) + `/serving`);
-//     });
-// }
+//     })
+//     .then(createRecipe);
 
-// function createRecipe(resultObj) {
-//   console.log(resultObj);
-//   let recipeResult = $("<div>")
-//     .addClass("recipe-card card my-5")
-//     .attr("id", resultObj.id);
-//   let cardColumns = $("<div>").addClass("columns");
-//   recipeResult.append(cardColumns);
-//   let image = $("<div>")
-//     .addClass("")
-//     .append($("<img>").attr("id", "lg-recipe-img").addClass("recipe-image"));
-//   cardColumns.append(image);
-//   let cardContent = $("<div>")
-//     .addClass(
-//       "column is-three-fifths card-content is-flex is-flex-direction-column m-4"
-//     )
-//     .append(
+//   function createRecipe(resultObj) {
+//     console.log(resultObj);
+//     let recipePage = $("<div>")
+//       .addClass("recipe card")
+//       .attr("id", resultObj.id);
+//     let recipePageColumns = $("<div>").addClass("columns");
+//     recipePage.append(cardColumns);
+//     let image = $("<div>")
+//       .addClass("column lg-recipe-img")
+//       .append(
+//         $("<img>").attr("id", "lg-recipe-img").addClass("lg-recipe-image")
+//       );
+//     recipePageColumns.append(image);
+//     let recipeContent = $("<div>")
+//       .addClass("column card-content is-flex is-flex-direction-column m-4")
+//       .append(
+//         $("<div>")
+//           .addClass("is-size-4 mt-1 pb-2 recipe-name-box")
+//           .attr("id", "recipe-title")
+//       );
+//     let recipeColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
+//     recipeColumns.append(
 //       $("<div>")
-//         .addClass("is-size-4 mt-1 pb-2 recipe-name-box")
-//         .attr("id", "recipe-name")
+//         .addClass(
+//           "column is-flex is-flex-direction-column is-justify-content-space-around is-narrow"
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("timer")
+//             )
+//             .append($("<p>").attr("id", "time"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("bolt")
+//             )
+//             .append($("<p>").attr("id", "calories"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("egg")
+//             )
+//             .append($("<p>").attr("id", "ingredients"))
+//         )
 //     );
-//   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
-//   itemColumns.append(
-//     $("<div>")
-//       .addClass(
-//         "column is-flex is-flex-direction-column is-justify-content-space-around is-narrow"
-//       )
-//       .append(
-//         $("<div>")
-//           .addClass("card-item")
-//           .append(
-//             $("<span>").addClass("material-symbols-outlined").text("timer")
-//           )
-//           .append($("<p>").attr("id", "time"))
-//       )
-//       .append(
-//         $("<div>")
-//           .addClass("card-item")
-//           .append(
-//             $("<span>").addClass("material-symbols-outlined").text("bolt")
-//           )
-//           .append($("<p>").attr("id", "calories"))
-//       )
-//       .append(
-//         $("<div>")
-//           .addClass("card-item")
-//           .append($("<span>").addClass("material-symbols-outlined").text("egg"))
-//           .append($("<p>").attr("id", "ingredients"))
-//       )
-//   );
-//   itemColumns.append(
-//     $("<div>")
-//       .addClass(
-//         ""
-//       )
-//       .append(
-//         $("<div>")
-//           .addClass("card-item")
-//           .append(
-//             $("<span>")
-//               .addClass("material-symbols-outlined")
-//               .text("restaurant_menu")
-//           )
-//           .append($("<p>").attr("id", "servings"))
-//       )
-//       .append(
-//         $("<div>")
-//           .addClass("card-item")
-//           .append(
-//             $("<span>").addClass("material-symbols-outlined").text("set_meal")
-//           )
-//           .append($("<p>").attr("id", "diet"))
-//       )
-//       .append(
-//         $("<div>")
-//           .addClass("card-item")
-//           .append(
-//             $("<span>")
-//               .addClass("material-symbols-outlined")
-//               .text("shopping_cart")
-//           )
-//           .append($("<p>").attr("id", "price"))
-//       )
-//   );
-//   cardContent.append(itemColumns);
-//   cardColumns.append(cardContent);
-//   $(`#recipe-results`).append(recipeResult);
-//   $(`#${resultObj.id}`).find("#recipe-name").text(`${resultObj.title}`);
-//   $(`#${resultObj.id}`).find("#recipe-img").attr("src", resultObj.image);
-//   cardDetails(resultObj.id);
-// }
+//     recipeColumns.append(
+//       $("<div>")
+//         .addClass("")
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>")
+//                 .addClass("material-symbols-outlined")
+//                 .text("restaurant_menu")
+//             )
+//             .append($("<p>").attr("id", "servings"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("set_meal")
+//             )
+//             .append($("<p>").attr("id", "diet"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>")
+//                 .addClass("material-symbols-outlined")
+//                 .text("shopping_cart")
+//             )
+//             .append($("<p>").attr("id", "price"))
+//         )
+//     );
+//     recipeContent.append(recipeColumns);
+//     recipePageColumns.append(recipeContent);
+//     $(`#recipe-page`).append(recipeResult);
+//     $(`#${resultObj.id}`).find("#recipe-name").text(`${resultObj.title}`);
+//     $(`#${resultObj.id}`).find("#lg-recipe-img").attr("src", resultObj.image);
+//     recipeDetails(resultObj.id);
+//   }
 
 function nutritionInfo(foodName) {
   let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
