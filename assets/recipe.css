@@ -9,9 +9,11 @@
 }
 
 h4 {
+  font-family: var(--header-font);
   font-weight: bold;
   padding-left: 5px;
   font-size: 20px;
+  color: var(--text-color);
 }
 
 .navbar-item {
@@ -27,7 +29,7 @@ h4 {
   font-size: 40px;
 }
 
-#directions {
+#directions, #ingredients-list {
   background-color: var(--bg-color);
   border-radius: 8px;
 }
