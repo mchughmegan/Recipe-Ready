@@ -11,11 +11,13 @@ When the user enters the website, https://mchughmegan.github.io/Recipe-Ready/, t
 
 Then, the user’s view will be pushed to the bottom of the page to view their search results.
 
-![ScreenShot1](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%202.png)
+![ScreenShot2](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%202.png)
 
 If the user is interested in a recipe, they will be able to view that recipe on the recipe page.
+![ScreenShot3](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%203.png)
 
 On the recipe page, the user will be able to click on an ingredients and view the nutritional information.
+![ScreenShot5](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%205.png)
 
 ## Credits
 
