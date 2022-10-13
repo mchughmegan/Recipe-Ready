@@ -249,6 +249,7 @@ function loadRecipePage(recipeId) {
     });
 }
 
+
 function goToRecipePage() {
   // $("#recipe-title").empty();
   // $("#recipe-description").empty();
@@ -261,6 +262,7 @@ function goToRecipePage() {
   // $("#lg-recipe-img").attr("src", localStorage.getItem("recipe-image"));
   // addIngredients(localStorage.getItem("ingredients-list"))
 }
+
 
 function nutritionInfo(foodName) {
   let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
@@ -316,9 +318,21 @@ $("#close-modal").on("click", function () {
 });
 
 
+<<<<<<< HEAD
 
 $(document).on("click", ".recipe-page-button", function (event) {
   event.preventDefault();
   loadRecipePage(this.id);
   goToRecipePage()
+=======
+$(document).on("click", ".recipe-page-button", function () {
+  // loadRecipePage($());
+  // need help here with getting id of clicked button
+  console.log("help");
+});
+  loadRecipePage(this.id);
+
+  goToRecipePage()
+
+>>>>>>> main
 });
