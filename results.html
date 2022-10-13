@@ -22,14 +22,17 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <section class="container is-fullhd has-text-white header">
+    <!-- Navigation -->
+    <section class="container is-fluid header">
       <div class="columns">
         <div class="column">
-          <h1 class="title has-text-white is-1 ml-5">Recipe Ready 🍴</h1>
+          <h1 class="title has-text-white is-1 ml-5">
+            Recipe Ready <span id="rr-icon">🍴</span>
+          </h1>
         </div>
         <div class="column">
-          <div class="navbar-menu my-6 mr-2">
-            <div class="navbar-end">
+          <div class="navbar-menu mr-2">
+            <div class="navbar-end navigation">
               <a class="navbar-item" href="index.html">Home</a>
               <a class="navbar-item" href="results.html">Results</a>
               <a class="navbar-item" href="recipe.html">Recipes</a>
@@ -42,7 +45,20 @@
       id="recipe-results"
       class="container is-flex is-justify-content-space-between"
     ></div>
-
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong
+            >&copy;Group 10 | 2022 |
+            <a
+              href="https://github.com/mchughmegan/Recipe-Ready"
+              target="_blank"
+              >GitHub Respository</a
+            ></strong
+          >
+        </p>
+      </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>

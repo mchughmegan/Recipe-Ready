@@ -1,8 +1,9 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `2e4d8335d1fb4993b8adb2f28fd348e0`; // HIDE THIS LATER
+  let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
-
+  $("#recipe-results").empty();
+  console.log(`Searching for ${query} in the ${type} option.`);
   if (type) {
     recipeUrl = `${recipeUrl}&type=${type}`;
   }
@@ -21,7 +22,7 @@ function searchApi(query, type) {
     .then(function (data) {
       if (!data.results.length) {
         console.log("No results.");
-        $("#recipe-results").text("No results.");
+        $("#recipe-results").append($("<div>").addClass("conainer text-center m-auto pb-4 is-size-4 no-results").text("No results."));
       } else {
         for (let i = 0; i < data.results.length; i++) {
           createCard(data.results[i]);
@@ -35,8 +36,8 @@ function searchApi(query, type) {
 
   // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `348e55f3282f4fd0a804ca5a758c1d3f`; // HIDE THIS LATER
-
+  let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
+  console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -83,10 +84,12 @@ function createCard(resultObj) {
   cardColumns.append(image);
   let cardContent = $("<div>")
     .addClass(
-      "column card-content is-flex is-flex-direction-column is-align-items-stretch m-4"
+      "column is-three-fifths card-content is-flex is-flex-direction-column m-4"
     )
     .append(
-      $("<h3>").addClass("is-size-4 mt-1 pb-2 ").attr("id", "recipe-name")
+      $("<div>")
+        .addClass("is-size-4 mt-1 pb-2 recipe-name-box")
+        .attr("id", "recipe-name")
     );
   let itemColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
   itemColumns.append(
@@ -165,9 +168,7 @@ function nutritionInfo(foodName) {
   fetch(nutrientUrl, {
     method: "GET",
     headers: {
-      "x-app-id": `e6864ba9`,
-      "x-app-key": `0ed5199703b824585d6ceae466cf2e24`,
-      "x-remote-user-id": `0`,
+      "X-Api-Key": apiKey,
     },
   })
     .then(function (response) {
@@ -178,12 +179,25 @@ function nutritionInfo(foodName) {
     })
     .then(function (data) {
       console.log(data);
+      $("#nutrition-info").append($("<li>").text(data.items[0].calories)); // Creates a <li> element with the food's calories
     });
 }
 
-// Sample call for debugging
-searchApi("pizza");
+$("#searchButton").on("click", function (event) {
+  event.preventDefault();
+  searchApi($("#recipeQuery").val(), $("#dropdownOption").val());
+  console.log($("#recipeQuery").val())
+  setTimeout(function () {
+    document.getElementById("recipe-results").scrollIntoView();
+  }, 1500);
+});
 
-nutritionInfo("potato");
+$("#nutrition-button").on("click", function (event) {
+  event.preventDefault();
+  $("#nutrient-modal").addClass("is-active")
+  nutritionInfo($("#nutrition-button").siblings("#ingredient-name").text());
+});
 
-document.getElementById('searchButton').addEventListener('click', searchApi)
+$("#close-modal").on("click", function() {
+  $("#nutrient-modal").removeClass("is-active")
+})

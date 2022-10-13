@@ -22,74 +22,75 @@
     <title>Recipe</title>
   </head>
   <body>
-    <section class="container is-fullhd has-text-white header">
+    <!-- Navigation -->
+    <section class="container is-fluid header">
       <div class="columns">
         <div class="column">
-          <h1 class="title has-text-white is-1 ml-5">Recipe Ready 🍴</h1>
+          <h1 class="title has-text-white is-1 ml-5">
+            Recipe Ready <span id="rr-icon">🍴</span>
+          </h1>
         </div>
         <div class="column">
-          <div class="navbar-menu my-6 mr-2">
-            <div class="navbar-end">
+          <div class="navbar-menu mr-2">
+            <div class="navbar-end navigation">
               <a class="navbar-item" href="index.html">Home</a>
-              <a class="navbar-item" href="results.html"
-                >Results</a
-              >
-              <a class="navbar-item" href="recipe.html"
-                >Recipes</a
-              >
+              <a class="navbar-item" href="index.html">Results</a>
+              <a class="navbar-item" href="recipe.html">Recipes</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="container">
+    <section class="container is-fluid">
       <div class="tile is-ancestor mt-5">
-        <div class="tile is-parent is-8 m-auto">
+        <div class="tile is-parent is-12 m-auto">
           <article
             class="is-flex is-flex-direction-column tile is-child notification"
             id="recipe"
           >
-            <p class="title" id="recipe-title">{Recipe Title}</p>
+            <p class="title m-auto pb-5" id="recipe-title">{Recipe Title}</p>
             <figure class="image is-3by1">
               <img src="https://bulma.io/images/placeholders/640x480.png" />
             </figure>
 
+            <!-- Quick look recipe info -->
             <div
               class="is-flex is-flex-direction-row content is-justify-content-space-around m-auto"
             >
-              <span class="card-item p-2">
+              <span class="card-item p-3">
                 <span class="material-symbols-outlined icon is-inline"
                   >timer</span
                 >
                 <p class="is-inline" id="time">45 mins</p>
               </span>
-              <span class="card-item p-2">
+              <span class="card-item p-3">
                 <span class="material-symbols-outlined icon is-inline"
                   >bolt</span
                 >
                 <p class="is-inline" id="calories">250 cal/serving</p>
               </span>
-              <span class="card-item p-2">
+              <span class="card-item p-3">
                 <span class="material-symbols-outlined icon is-inline"
                   >egg</span
                 >
                 <p class="is-inline" id="ingredients">5 ingredients</p>
               </span>
 
-              <span class="card-item p-2">
+              <span class="card-item p-3">
                 <span class="material-symbols-outlined icon is-inline"
                   >restaurant_menu</span
                 >
                 <p class="is-inline" id="difficulty">Easy</p>
               </span>
-              <span class="card-item p-2">
+              <span class="card-item p-3">
                 <span class="material-symbols-outlined icon is-inline"
                   >set_meal</span
                 >
                 <p class="is-inline" id="diet">Vegetarian</p>
               </span>
             </div>
+            <!-- Recipe Instructions -->
             <div class="is-flex is-flex-direction-column" id="directions">
               <h4>Step-by-Step Recipe</h4>
               <ol class="ml-5">
@@ -103,7 +104,37 @@
         </div>
       </div>
     </section>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <!-- debugging for ingredient info feature -->
+    <div class="container is-flex is-flex-direction-row is-align-items-center">
+      <li id="ingredient-name" class="ingredient mr-2">.25 lb Potato</li>
+      <button id="nutrition-button" class="button is-rounded is-narrow is-info p-1 is-small">
+        <span class="material-symbols-outlined">info</span>
+      </button>
+    </div>
+    <div id="nutrient-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <ul id="nutrition-info" class="">
+        </ul>
+      </div>
+      <button id="close-modal" class="modal-close is-large" aria-label="close"></button> 
+    </div>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong
+            >&copy;Group 10 | 2022 |
+            <a
+              href="https://github.com/mchughmegan/Recipe-Ready"
+              target="_blank"
+              >GitHub Respository</a
+            ></strong
+          >
+        </p>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>

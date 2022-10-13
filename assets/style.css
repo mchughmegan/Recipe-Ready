@@ -8,8 +8,21 @@
   --font: "inter", sans-serif;
 }
 
+body {
+  background-color: var(--bg-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 input {
   width: 600px !important;
+  font-family: var(--font);
+}
+
+form {
+  font-family: var(--font);
 }
 
 .header {
@@ -17,6 +30,7 @@ input {
   height: 100px;
   margin-left: 0;
   margin-right: 0;
+  font-family: var(--header-font);
 }
 
 .hero.has-background {
@@ -48,16 +62,25 @@ input {
   width: 100%;
 }
 
+.ingredient {
+  font-family: var(--font);
+  color: var(--text-color);
+}
+
 .full-width {
   width: 100%;
 }
 
 .navbar-item {
   color: white;
+  font-family: var(--font);
 }
 
 .navbar-item:hover {
   color: #142c2d !important;
+}
+.navbar-menu {
+  margin-top: 30px;
 }
 
 .subtitle {
@@ -68,11 +91,80 @@ input {
   border-radius: 15px;
 }
 
-@media screen and (max-width: 992px) {
+.no-results {
+  font-family: var(--header-font);
+  color: var(--text-color);
 }
 
-@media screen and (max-width: 768px) {
+#nutrition-info {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1408px) {
+  #searchRecipe {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1216px) {
+  #searchRecipe {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #searchRecipe {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .subtitle {
+    display: none;
+  }
+  #searchRecipe {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #rr-icon {
+    display: none;
+  }
+  .navbar-menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: #142c2d;
+  }
+  .header {
+    height: 150px;
+  }
+  .title {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #searchRecipe {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #searchBar {
+    width: 300px;
+  }
+  #rr-icon {
+    display: none;
+  }
+  .navbar-menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: #142c2d;
+  }
+  .header {
+    height: 250px;
+  }
+  .title {
+    margin-bottom: 0;
+  }
 }
