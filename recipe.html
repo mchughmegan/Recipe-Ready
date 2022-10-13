@@ -111,13 +111,61 @@
         <span class="material-symbols-outlined">info</span>
       </button>
     </div>
+
     <div id="nutrient-modal" class="modal">
       <div class="modal-background"></div>
-      <div class="modal-content">
-        <ul id="nutrition-info" class="">
-        </ul>
+      <div class="modal-card is-narrow">
+        <div class="modal-card-head">
+          <p id="modal-title" class="modal-card-title has-text-centered"></p>
+          <button id="close-modal" class="modal-close is-large" aria-label="close"></button>
+        </div>
+        <div class="modal-content">
+          <table class="table is-striped is-fullwidth">
+            <tbody>
+              <tr>
+                <td>Calories</td>
+                <td id="cals"></td>
+              </tr>
+              <tr>
+                <td>Carbohydrates (g)</td>
+                <td id="carbs"></td>
+              </tr>
+              <tr>
+                <td>Cholesterol (mg)</td>
+                <td id="cholesterol"></td>
+              </tr>
+              <tr>
+                <td>Saturated fat (g)</td>
+                <td id="sat-fat"></td>
+              </tr>
+              <tr>
+                <td>Total fat (g)</td>
+                <td id="fat"></td>
+              </tr>
+              <tr>
+                <td>Fiber (g)</td>
+                <td id="fiber"></td>
+              </tr>
+              <tr>
+                <td>Potassium (mg)</td>
+                <td id="potassium"></td>
+              </tr>
+              <tr>
+                <td>Protein (g)</td>
+                <td id="protein"></td>
+              </tr>
+              <tr>
+                <td>Sugar (g)</td>
+                <td id="sugar"></td>
+              </tr>
+              <tr>
+                <td>Sodium (mg)</td>
+                <td id="sodium"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <button id="close-modal" class="modal-close is-large" aria-label="close"></button> 
     </div>
 
     <footer class="footer">
