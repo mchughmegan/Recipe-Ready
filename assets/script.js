@@ -178,7 +178,7 @@ function createCard(resultObj) {
       .addClass("is-flex is-flex-direction-row is-justify-content-end btn is-link recipe-page-button")
       .attr("id", resultObj.id)
       .append(
-        $("<span>").addClass("material-symbols-outlined p-2 .recipe-page-button").text("open_in_full")
+        $("<span>").addClass("material-symbols-outlined p-2").text("open_in_full")
       )
   );
 }
@@ -417,7 +417,7 @@ $("#close-modal").on("click", function () {
 // Testing the implementation of local storage into the recipe page
 $("#recipe-description").html(localStorage.getItem("recipe-description"));
 
-$(".recipe-page-button").on("click",function () {
+$(document).on("click", ".recipe-page-button",function () {
   // loadRecipePage($());
   // need help here with getting id of clicked button
   console.log("help")
