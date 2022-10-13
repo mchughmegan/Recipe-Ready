@@ -254,13 +254,12 @@ function goToRecipePage() {
   // $("#recipe-description").empty();
   // $("#lg-recipe-img").empty();
   // $("#ingredients-list").empty();
-
   
-  $("#recipe-title").text(localStorage.getItem("recipe-name"));
-  $("#recipe-description").html(localStorage.getItem("recipe-description"));
-  $("#lg-recipe-img").attr("src", localStorage.getItem("recipe-image"));
-  addIngredients(localStorage.getItem("ingredients-list"))
-  location.href = "/recipe.html";
+  
+  $(document).find("#recipe-title").text(localStorage.getItem("recipe-name"));
+  // $("#recipe-description").html(localStorage.getItem("recipe-description"));
+  // $("#lg-recipe-img").attr("src", localStorage.getItem("recipe-image"));
+  // addIngredients(localStorage.getItem("ingredients-list"))
 }
 
 function nutritionInfo(foodName) {
@@ -316,9 +315,10 @@ $("#close-modal").on("click", function () {
   $("#nutrient-modal").removeClass("is-active");
 });
 
-// Call this to debug the load recipe page function
 
-$(document).on("click", ".recipe-page-button", function () {
+
+$(document).on("click", ".recipe-page-button", function (event) {
+  event.preventDefault();
   loadRecipePage(this.id);
   goToRecipePage()
 });
