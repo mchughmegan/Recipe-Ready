@@ -47,48 +47,17 @@
         <div class="tile is-parent is-12 m-auto">
           <article
             class="is-flex is-flex-direction-column tile is-child notification"
-            id="recipe"
+            id="recipe-page"
           >
             <p class="title m-auto pb-5" id="recipe-title"></p>
             <figure class="image is-3by1">
-              <img id="recipe-page-img" src="https://bulma.io/images/placeholders/640x480.png" />
+              <img id="lg-recipe-img" src="" />
             </figure>
 
             <!-- Quick look recipe info -->
-            <div
+            <div id="recipe-page-quicklook"
               class="is-flex is-flex-direction-row content is-align-items-center is-justify-content-space-around m-auto"
             >
-              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
-                <span class="material-symbols-outlined icon"
-                  >timer</span
-                >
-                <p class="ml-2" id="recipe-page-time">45 mins</p>
-              </span>
-              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
-                <span class="material-symbols-outlined icon"
-                  >bolt</span
-                >
-                <p class="ml-2" id="recipe-page-calories">250 cal/serving</p>
-              </span>
-              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
-                <span class="material-symbols-outlined icon"
-                  >egg</span
-                >
-                <p class="ml-2" id="recipe-page-ingredients">5 ingredients</p>
-              </span>
-
-              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
-                <span class="material-symbols-outlined icon"
-                  >restaurant_menu</span
-                >
-                <p class="ml-2" id="recipe-page-servings">Easy</p>
-              </span>
-              <span class="recipe-page-item p-3 is-flex is-flex-direction-row">
-                <span class="material-symbols-outlined icon"
-                  >set_meal</span
-                >
-                <p class="ml-2" id="recipe-page-diet">Vegetarian</p>
-              </span>
             </div>
             <!-- Recipe Description -->
             <div class="is-flex is-flex-direction-column" id="directions">
@@ -98,11 +67,8 @@
             <!-- Recipe Instructions -->
             <div class="is-flex is-flex-direction-column mt-4" id="directions">
               <h4>Step-by-Step Recipe</h4>
-              <ol class="ml-5">
-                <li class="p-2"></li>
-                <li class="p-2"></li>
-                <li class="p-2"></li>
-                <li class="p-2"></li>
+              <ol class="ml-5" id="recipe-instructions">
+               
               </ol>
             </div>
             <!-- Recipe Ingredients list -->
@@ -111,7 +77,7 @@
               <ul class="ml-5">
                 <!-- The addIngredient function will generate the list of 
                   ingredients with their respective nutrition modals -->
-              </ol>
+              </ul>
             </div>
           </article>
         </div>
