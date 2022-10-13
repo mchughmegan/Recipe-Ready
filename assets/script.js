@@ -209,11 +209,8 @@ function addRecipeStep(recipeStep) {
   $("<div>")
     .addClass("is-flex is-flex-direction-row is-align-items-center")
     .append(
-      $("<li>")
-        .attr("id", `recipe-step`)
-        .addClass("mr-2")
-        .text(`${recipeStep}`)
-    )
+      $("<li>").attr("id", `recipe-step`).addClass("mr-2").text(`${recipeStep}`)
+    );
 }
 
 // Calls the recipe api, then saves the necessary information to local storage to that it can be loaded on to the recipe page.
@@ -234,10 +231,10 @@ function loadRecipePage(recipeId) {
       console.log(data);
       localStorage.clear();
       // Stores the summary into the local storage variable "recipe-description"
-      localStorage.setItem("recipe-image", data.image)
+      localStorage.setItem("recipe-image", data.image);
       localStorage.setItem("recipe-name", data.title);
       localStorage.setItem("recipe-description", data.summary);
-      let ingredientsList = []
+      let ingredientsList = [];
       for (let i = 0; i < data.extendedIngredients.length; i++) {
         ingredientsList.push(data.extendedIngredients[i].name);
       }
@@ -445,8 +442,7 @@ $(document).on("click", ".recipe-page-button", function () {
   // need help here with getting id of clicked button
   console.log("help");
 });
-  loadRecipePage(this.id);
-  // need help here with getting id of clicked button
-  console.log(this.id);
-  console.log("button pressed");
-});
+loadRecipePage(this.id);
+// need help here with getting id of clicked button
+console.log(this.id);
+console.log("button pressed");
