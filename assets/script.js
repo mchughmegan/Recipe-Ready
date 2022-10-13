@@ -31,7 +31,10 @@ function searchApi(query, type) {
     });
 }
 
-// Gets the details for each recpie
+//search input and categories function
+
+
+  // Gets the details for each recpie
 function cardDetails(recipeId) {
   let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
   console.log("Card Created");
@@ -179,9 +182,6 @@ function nutritionInfo(foodName) {
       $("#nutrition-info").append($("<li>").text(data.items[0].calories)); // Creates a <li> element with the food's calories
     });
 }
-
-// Sample call for debugging
-
 
 $("#searchButton").on("click", function (event) {
   event.preventDefault();
