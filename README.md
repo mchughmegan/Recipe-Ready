@@ -7,7 +7,11 @@ Have you ever planned on making a recipe only to find out at the grocery store t
 ## Usage
 When the user enters the website they will be able to input a search term and choose from meal categories to refine their search. 
 
+![ScreenShot1](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%201.png)
+
 Then, the user’s view will be pushed to the bottom of the page to view their search results.
+
+![ScreenShot1](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%202.png)
 
 If the user is interested in a recipe, they will be able to view that recipe on the recipe page.
 
