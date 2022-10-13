@@ -1,6 +1,6 @@
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `4541c67ec108489b83541b6386913f6e`; // HIDE THIS LATER
+  let apiKey = `bb44c277222941bb9693b73540f82a99`; // HIDE THIS LATER
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
   $("#recipe-results").empty();
   console.log(`Searching for ${query} in the ${type} option.`);
@@ -39,7 +39,7 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `4541c67ec108489b83541b6386913f6e`; // HIDE THIS LATER
+  let apiKey = `bb44c277222941bb9693b73540f82a99`; // HIDE THIS LATER
   console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -54,29 +54,29 @@ function cardDetails(recipeId) {
     .then(function (data) {
       console.log(data);
       var readyInMinutes = `${data.readyInMinutes}`;
-      $(`#${recipeId}`)
+      $(`#${recipeId}-card`)
         .find("#time")
         .text(readyInMinutes + ` min`);
       var roundedCalories = `${data.nutrition.nutrients[0].amount}`;
-      $(`#${recipeId}`)
+      $(`#${recipeId}-card`)
         .find("#calories")
         .text(Math.round(roundedCalories) + ` calories`);
       var ingredients = `${data.extendedIngredients.length}`;
-      $(`#${recipeId}`)
+      $(`#${recipeId}-card`)
         .find("#ingredients")
         .text(ingredients + ` ingredients`);
       var servings = `${data.servings}`;
-      $(`#${recipeId}`)
+      $(`#${recipeId}-card`)
         .find("#servings")
         .text(servings + ` servings`);
       var diets = `${data.diets[0]}`;
       if (data.diets[0]) {
-        $(`#${recipeId}`).find("#diet").text(diets);
+        $(`#${recipeId}-card`).find("#diet").text(diets);
       } else {
-        $(`#${recipeId}`).find("#diet").text(`none`);
+        $(`#${recipeId}-card`).find("#diet").text(`none`);
       }
       var roundedPrice = `${data.pricePerServing}`;
-      $(`#${recipeId}`)
+      $(`#${recipeId}-card`)
         .find("#price")
         .text(`$` + Math.ceil(roundedPrice / 100) + `/serving`);
     });
@@ -87,7 +87,7 @@ function createCard(resultObj) {
   console.log(resultObj);
   let recipeResult = $("<div>")
     .addClass("recipe-card card my-5")
-    .attr("id", resultObj.id);
+    .attr("id", `${resultObj.id}-card`);
   let cardColumns = $("<div>").addClass("columns");
   recipeResult.append(cardColumns);
   let image = $("<div>")
@@ -170,8 +170,8 @@ function createCard(resultObj) {
   cardContent.append(itemColumns);
   cardColumns.append(cardContent);
   $(`#recipe-results`).append(recipeResult);
-  $(`#${resultObj.id}`).find("#recipe-name").text(resultObj.title);
-  $(`#${resultObj.id}`).find("#recipe-img").attr("src", resultObj.image);
+  $(`#${resultObj.id}-card`).find("#recipe-name").text(resultObj.title);
+  $(`#${resultObj.id}-card`).find("#recipe-img").attr("src", resultObj.image);
   cardDetails(resultObj.id);
   cardContent.append(
     $("<button>")
@@ -205,9 +205,20 @@ function addIngredient(ingredientName) {
     );
 }
 
+function addRecipeStep(recipeStep) {
+  $("<div>")
+    .addClass("is-flex is-flex-direction-row is-align-items-center")
+    .append(
+      $("<li>")
+        .attr("id", `recipe-step`)
+        .addClass("mr-2")
+        .text(`${recipeStep}`)
+    )
+}
+
 // Calls the recipe api, then saves the necessary information to local storage to that it can be loaded on to the recipe page.
 function loadRecipePage(recipeId) {
-  let apiKey = `0db2a7a699f24bc3932133b5b7b54eaa`; // HIDE THIS LATER
+  let apiKey = `bb44c277222941bb9693b73540f82a99`; // HIDE THIS LATER
   console.log("Card Created");
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
@@ -221,8 +232,17 @@ function loadRecipePage(recipeId) {
     })
     .then(function (data) {
       console.log(data);
+      localStorage.clear();
       // Stores the summary into the local storage variable "recipe-description"
+      localStorage.setItem("recipe-image", data.image)
+      localStorage.setItem("recipe-name", data.title);
       localStorage.setItem("recipe-description", data.summary);
+      let ingredientsList = []
+      for (let i = 0; i < data.extendedIngredients.length; i++) {
+        ingredientsList.push(data.extendedIngredients[i].name);
+      }
+      localStorage.setItem("ingredients-list", ingredientsList);
+      localStorage.setItem("steps-list", data.instructions);
     });
 }
 
@@ -415,7 +435,7 @@ $("#close-modal").on("click", function () {
 });
 
 // Call this to debug the load recipe page function
-// loadRecipePage(640636);
+loadRecipePage(640636);
 
 // Testing the implementation of local storage into the recipe page
 $("#recipe-description").html(localStorage.getItem("recipe-description"));
@@ -424,4 +444,9 @@ $(document).on("click", ".recipe-page-button", function () {
   // loadRecipePage($());
   // need help here with getting id of clicked button
   console.log("help");
+});
+  loadRecipePage(this.id);
+  // need help here with getting id of clicked button
+  console.log(this.id);
+  console.log("button pressed");
 });
