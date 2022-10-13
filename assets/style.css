@@ -101,6 +101,17 @@ form {
   color: var(--text-color);
 }
 
+.modal-content li {
+  font-family: var(--font);
+  color: var(--text-color);
+  line-height: 2rem;
+}
+
+#modal-title {
+  font-family: var(--header-font);
+  color: var(--text-color);
+}
+
 @media screen and (max-width: 1408px) {
   #searchRecipe {
     display: flex;

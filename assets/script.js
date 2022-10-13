@@ -330,7 +330,18 @@ function nutritionInfo(foodName) {
     })
     .then(function (data) {
       console.log(data);
-      $("#nutrition-info").append($("<li>").text(data.items[0].calories)); // Creates a <li> element with the food's calories
+      $("#modal-title").text(`${$("#ingredient-name").text()} Nutrition information`)
+      $("#cals").text(data.items[0].calories);
+      $("#carbs").text(data.items[0].carbohydrates_total_g);
+      $("#cholesterol").text(data.items[0].cholesterol_mg);
+      $("#sat-fat").text(data.items[0].fat_saturated_g);
+      $("#fat").text(data.items[0].fat_total_g);
+      $("#fiber").text(data.items[0].fiber_g);
+      $("#potassium").text(data.items[0].potassium_mg);
+      $("#protein").text(data.items[0].protein_g);
+      $("#sugar").text(data.items[0].sugar_g);
+      $("#sodium").text(data.items[0].sodium_mg);
+      console.log(data.items[0].calories)
     });
 }
 
