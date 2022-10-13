@@ -24,7 +24,7 @@ function searchApi(query, type) {
         console.log("No results.");
         $("#recipe-results").append(
           $("<div>")
-            .addClass("conainer text-center m-auto pb-4 is-size-4 no-results")
+            .addClass("container text-center m-auto pb-4 is-size-4 no-results")
             .text("No results.")
         );
       } else {
@@ -221,6 +221,142 @@ function loadRecipePage(recipeId) {
       localStorage.setItem("recipe-description", data.summary);
     });
 }
+
+
+// function recipeDetails(recipeId) {
+//   let apiKey = `778cebdae1dd400dbf0229850f641b4b`; // HIDE THIS LATER
+//   console.log("Recipe Created");
+//   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
+//   $(`#recipe-page`).empty();
+//   fetch(detailsUrl, {
+//     method: "GET",
+//   })
+//     .then(function (response) {
+//       if (!response.ok) {
+//         throw response.json();
+//       }
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       var readyInMinutes = `${data.readyInMinutes}`;
+//       $(`#${recipeId}`)
+//         .find("#time")
+//         .text(readyInMinutes + ` min`);
+//       var roundedCalories = `${data.nutrition.nutrients[0].amount}`;
+//       $(`#${recipeId}`)
+//         .find("#calories")
+//         .text(Math.round(roundedCalories) + ` calories`);
+//       var ingredients = `${data.extendedIngredients.length}`;
+//       $(`#${recipeId}`)
+//         .find("#ingredients")
+//         .text(ingredients + ` ingredients`);
+//       var servings = `${data.servings}`;
+//       $(`#${recipeId}`)
+//         .find("#servings")
+//         .text(servings + ` servings`);
+//       var diets = `${data.diets[0]}`;
+//       if (data.diets[0]) {
+//         $(`#${recipeId}`).find("#diet").text(diets);
+//       } else {
+//         $(`#${recipeId}`).find("#diet").text(`none`);
+//       }
+//       var roundedPrice = `${data.pricePerServing}`;
+//       $(`#${recipeId}`)
+//         .find("#price")
+//         .text(`$` + Math.ceil(roundedPrice / 100) + `/serving`);
+//     })
+//     .then(createRecipe);
+
+//   function createRecipe(resultObj) {
+//     console.log(resultObj);
+//     let recipePage = $("<div>")
+//       .addClass("recipe card")
+//       .attr("id", resultObj.id);
+//     let recipePageColumns = $("<div>").addClass("columns");
+//     recipePage.append(cardColumns);
+//     let image = $("<div>")
+//       .addClass("column lg-recipe-img")
+//       .append(
+//         $("<img>").attr("id", "lg-recipe-img").addClass("lg-recipe-image")
+//       );
+//     recipePageColumns.append(image);
+//     let recipeContent = $("<div>")
+//       .addClass("column card-content is-flex is-flex-direction-column m-4")
+//       .append(
+//         $("<div>")
+//           .addClass("is-size-4 mt-1 pb-2 recipe-name-box")
+//           .attr("id", "recipe-title")
+//       );
+//     let recipeColumns = $("<div>").addClass("columns mt-2 item-box mb-2");
+//     recipeColumns.append(
+//       $("<div>")
+//         .addClass(
+//           "column is-flex is-flex-direction-column is-justify-content-space-around is-narrow"
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("timer")
+//             )
+//             .append($("<p>").attr("id", "time"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("bolt")
+//             )
+//             .append($("<p>").attr("id", "calories"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("egg")
+//             )
+//             .append($("<p>").attr("id", "ingredients"))
+//         )
+//     );
+//     recipeColumns.append(
+//       $("<div>")
+//         .addClass("")
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>")
+//                 .addClass("material-symbols-outlined")
+//                 .text("restaurant_menu")
+//             )
+//             .append($("<p>").attr("id", "servings"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>").addClass("material-symbols-outlined").text("set_meal")
+//             )
+//             .append($("<p>").attr("id", "diet"))
+//         )
+//         .append(
+//           $("<div>")
+//             .addClass("card-item")
+//             .append(
+//               $("<span>")
+//                 .addClass("material-symbols-outlined")
+//                 .text("shopping_cart")
+//             )
+//             .append($("<p>").attr("id", "price"))
+//         )
+//     );
+//     recipeContent.append(recipeColumns);
+//     recipePageColumns.append(recipeContent);
+//     $(`#recipe-page`).append(recipeResult);
+//     $(`#${resultObj.id}`).find("#recipe-name").text(`${resultObj.title}`);
+//     $(`#${resultObj.id}`).find("#lg-recipe-img").attr("src", resultObj.image);
+//     recipeDetails(resultObj.id);
+//   }
 
 function nutritionInfo(foodName) {
   let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
