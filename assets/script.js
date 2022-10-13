@@ -228,13 +228,14 @@ function loadRecipePage(recipeId) {
     })
     .then(function (data) {
       console.log(data);
+      localStorage.clear();
       // Stores the summary into the local storage variable "recipe-description"
       localStorage.setItem("recipe-image", data.image)
       localStorage.setItem("recipe-name", data.title);
       localStorage.setItem("recipe-description", data.summary);
       let ingredientsList = []
-      for (let i = 1; i < data.extendedIngredients.length; i++) {
-        ingredientsList[i] = ingredientsList + data.extendedIngredients[i].name;
+      for (let i = 0; i < data.extendedIngredients.length; i++) {
+        ingredientsList.push(data.extendedIngredients[i].name);
       }
       localStorage.setItem("ingredients-list", ingredientsList);
       localStorage.setItem("steps-list", data.instructions);
@@ -431,15 +432,14 @@ $("#close-modal").on("click", function () {
 });
 
 // Call this to debug the load recipe page function
-// loadRecipePage(640636);
+loadRecipePage(640636);
 
 // Testing the implementation of local storage into the recipe page
 $("#recipe-description").html(localStorage.getItem("recipe-description"));
 
-$("button").click(function () {
-  // loadRecipePage($());
+$(document).on("click", ".recipe-page-button", function () {
+  loadRecipePage(this.id);
   // need help here with getting id of clicked button
   console.log(this.id);
   console.log("button pressed");
-  console.log($(this).attr('id'));
 });
