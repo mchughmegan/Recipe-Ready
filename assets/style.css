@@ -139,13 +139,6 @@ form {
   .subtitle {
     display: none;
   }
-  #searchRecipe {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #rr-icon {
-    display: none;
-  }
   .navbar-menu {
     display: block;
     margin: 0;
@@ -158,19 +151,20 @@ form {
   .title {
     margin-bottom: 0;
   }
-}
-
-@media screen and (max-width: 640px) {
   #searchRecipe {
     display: flex;
     flex-wrap: wrap;
   }
-  #searchBar {
-    width: 300px;
-  }
   #rr-icon {
     display: none;
   }
+  #recipe-name {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 640px) {
   .navbar-menu {
     display: block;
     margin: 0;
@@ -182,5 +176,19 @@ form {
   }
   .title {
     margin-bottom: 0;
+  }
+  #searchRecipe {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #searchBar {
+    width: 300px;
+  }
+  #rr-icon {
+    display: none;
+  }
+  #recipe-name {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
