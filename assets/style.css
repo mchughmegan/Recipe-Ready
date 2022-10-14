@@ -138,6 +138,23 @@ STYLES BELOW ARE BEING USED BY THE MODAL ALREADY */
   color: var(--text-color);
 }
 
+#modal-recipe-description {
+  line-height: 1.5;
+}
+
+#modal-recipe-instructions {
+  line-height: 1.5;
+}
+
+#recipe-modal h4 {
+  text-align: center;
+  background-color: var(--bg-color);
+}
+
+#modal-recipe-ingredients {
+  text-transform: capitalize;
+}
+
 @media screen and (max-width: 1408px) {
   #searchRecipe {
     display: flex;
