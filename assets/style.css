@@ -96,9 +96,17 @@ form {
   font-family: var(--font);
 }
 
-#nutrition-info {
-  background-color: var(--bg-color);
+.modal-content {
+  background-color: var(--card-color);
   color: var(--text-color);
+}
+
+#modal-recipe-img {
+  object-fit: cover;
+}
+
+#recipe-modal h4 {
+  font-family: var(--header-font);
 }
 
 .modal-content li {
@@ -107,7 +115,7 @@ form {
   line-height: 2rem;
 }
 
-#modal-title {
+#recipe-title {
   font-family: var(--header-font);
   color: var(--text-color);
 }
