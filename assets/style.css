@@ -96,6 +96,9 @@ form {
   font-family: var(--font);
 }
 
+/* ADD STYLES TO MAKE IT LOOK PRETTY !!!! 
+STYLES BELOW ARE BEING USED BY THE MODAL ALREADY */
+
 .modal-content {
   background-color: var(--card-color);
   color: var(--text-color);

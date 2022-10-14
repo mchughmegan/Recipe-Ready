@@ -2,7 +2,7 @@ let searchResults;
 
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `35e6d1128b084efc8855bbff812dfb63`;
+  let apiKey = `e5bf7e56648645d68a33119e2fe6fb01`;
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
   $("#recipe-results").empty();
   console.log(`Searching for ${query} in the ${type} option.`);
@@ -40,7 +40,7 @@ function searchApi(query, type) {
 
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `35e6d1128b084efc8855bbff812dfb63`;
+  let apiKey = `e5bf7e56648645d68a33119e2fe6fb01`;
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -192,7 +192,7 @@ function nutritionDropdown(foodName) {
   let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
   let nutrientUrl = `https://api.calorieninjas.com/v1/nutrition?query=${foodName}`;
   if ($(`dropdown-${foodName}`).children() > 0) {
-    $(".dropdown").addClass("is-active");
+    return;
   } else {
     fetch(nutrientUrl, {
       method: "GET",
@@ -208,7 +208,7 @@ function nutritionDropdown(foodName) {
       })
       .then(function (data) {
         console.log(data);
-        $(`dropdown-${foodName}`).append(
+        $(`#dropdown-${foodName}-content`).append(
           $("<div>")
             .addClass("dropdown-item")
             .append($("<p>").text(`Calories: ${data.items[0].calories}`))
@@ -246,7 +246,6 @@ function nutritionDropdown(foodName) {
             .append($("<p>").text(`Sodium (mg): ${data.items[0].sodium_mg}`))
         );
       });
-      $(".dropdown").addClass("is-active");
   }
 }
 
@@ -285,12 +284,18 @@ function addIngredients(recipeId) {
             )
         )
         .append(
-          $("<div")
+          $("<div>")
             .addClass("dropdown-menu")
             .attr("id", "dropdown-menu-2")
             .attr("role", "menu")
-            .append($("<div>").addClass("dropdown-content"))
-            .attr("id", `dropdown-${foodName}`)
+            .append(
+              $("<div>")
+                .addClass("dropdown-content")
+                .attr(
+                  "id",
+                  `dropdown-${searchResults[recipeId].extendedIngredients[i].name}-content`
+                )
+            )
         )
     );
   }
@@ -327,7 +332,11 @@ $(document).on("click", ".recipe-page-button", function (event) {
 
 $(document).on("click", ".ingredient-dropdown-button", function (event) {
   event.preventDefault();
-  if ($(".dropdown").attr("class"))
+  if ($(`#dropdown-${this.id}`).hasClass("is-active")) {
+    $(`#dropdown-${this.id}`).removeClass("is-active");
+  } else {
+    $(`#dropdown-${this.id}`).addClass("is-active");
+    nutritionDropdown(this.id);
+  }
   console.log("dropdown clicked");
-  nutritionDropdown(this.id);
 });
