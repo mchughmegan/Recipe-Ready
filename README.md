@@ -16,11 +16,11 @@ Then, the user’s view will be pushed to the bottom of the page to view their s
 
 ![Results](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/RecipeResults.png)
 
-If the user is interested in a recipe, they will be able to view more information by clicking on the recipe.
-![ScreenShot3](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%203.png)
+If the user is interested in a recipe, they will be able to view more information by clicking on the button at the corner of the recipe.
+![Click](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/RecipeCardClick.png)
 
-On the recipe page, the user will be able to click on an ingredients and view the nutritional information.
-![ScreenShot5](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/pic%205.png)
+On the recipe popup, the user will be able to see information such as nutrition and instructions.
+![Recipe Info](https://github.com/mchughmegan/Recipe-Ready/blob/main/assets/RecipeInfoScreenshot.png)
 
 ## Credits
 
