@@ -29,12 +29,12 @@ h4 {
   font-size: 40px;
 }
 
-#directions, #ingredients-list {
+.article-section {
   background-color: var(--bg-color);
   border-radius: 8px;
 }
 
-#recipe {
+#recipe-page {
   background-color: var(--card-color);
   border-radius: 8px;
 }
