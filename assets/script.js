@@ -2,7 +2,7 @@ let searchResults;
 
 // Gets the list of recipes based on search query and type
 function searchApi(query, type) {
-  let apiKey = `46e4c2b31cc8426cbeba641db940aaf6`;
+  let apiKey = `35e6d1128b084efc8855bbff812dfb63`;
   let recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey}`;
   $("#recipe-results").empty();
   console.log(`Searching for ${query} in the ${type} option.`);
@@ -38,11 +38,9 @@ function searchApi(query, type) {
     });
 }
 
-//search input and categories function
-
 // Gets the details for each recpie
 function cardDetails(recipeId) {
-  let apiKey = `46e4c2b31cc8426cbeba641db940aaf6`;
+  let apiKey = `35e6d1128b084efc8855bbff812dfb63`;
   let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
   fetch(detailsUrl, {
     method: "GET",
@@ -190,121 +188,112 @@ function createCard(resultObj) {
   );
 }
 
-// Function to parse through ingredient array and create a list item
-function addIngredients(recipeId) {
+function nutritionDropdown(foodName) {
   let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
   let nutrientUrl = `https://api.calorieninjas.com/v1/nutrition?query=${foodName}`;
-  fetch(nutrientUrl, {
-    method: "GET",
-    headers: {
-      "X-Api-Key": apiKey,
-    },
-  })
-    .then(function (response) {
-      if (!response.ok) {
-        throw response.json();
-      }
-      return response.json();
+  if ($(`dropdown-${foodName}`).children() > 0) {
+    $(".dropdown").addClass("is-active");
+  } else {
+    fetch(nutrientUrl, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": apiKey,
+      },
     })
-    .then(function (data) {
-      for (
-        let i = 0;
-        i < searchResults[recipeId].extendedIngredients.length;
-        i++
-      ) {
-        $("#modal-recipe-ingredients").append(
+      .then(function (response) {
+        if (!response.ok) {
+          throw response.json();
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        $(`dropdown-${foodName}`).append(
           $("<div>")
-            .addClass("dropdown")
+            .addClass("dropdown-item")
+            .append($("<p>").text(`Calories: ${data.items[0].calories}`))
+            .append($("<hr>").addClass("dropdown-divider"))
             .append(
-              $("<div>")
-                .addClass("dropdown-trigger")
-                .text(searchResults[recipeId].extendedIngredients[i].name)
-                .append(
-                  $("<button>")
-                    .addClass("button")
-                    .attr("aria-haspopup", "true")
-                    .attr("aria-controls", "dropdown-menu2")
-                    .append(
-                      $("<span>")
-                        .addClass("icon is-small")
-                        .append(
-                          $("<i>")
-                            .addClass("fas fa-angle-down")
-                            .attr("aria-hidden", "true")
-                        )
-                    )
-                )
+              $("<p>").text(
+                `Carbohydrates (g): ${data.items[0].carbohydrates_total_g}`
+              )
             )
+            .append($("<hr>").addClass("dropdown-divider"))
             .append(
-              $("<div")
-                .addClass("dropdown-menu")
-                .attr("id", "dropdown-menu-2")
-                .attr("role", "menu")
-                .append(
-                  $("<div>")
-                    .addClass("dropdown-content")
-                    .append(
-                      $("<div>")
-                        .addClass("dropdown-item")
-                        .append(
-                          $("<p>").text(`Calories: ${data.items[0].calories}`)
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Carbohydrates (g): ${data.items[0].carbohydrates_total_g}`
-                          )
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Cholesterol (mg): ${data.items[0].cholesterol_mg}`
-                          )
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Saturated Fat (g): ${data.items[0].fat_saturated_g}`
-                          )
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Total Fat (g): ${data.items[0].fat_total_g}`
-                          )
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(`Fiber (g): ${data.items[0].fiber_g}`)
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Potassium (mg): ${data.items[0].potassium_mg}`
-                          )
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Protein (g): ${data.items[0].protein_g}`
-                          )
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(`Sugar (g): ${data.items[0].sugar_g}`)
-                        )
-                        .append($("<hr>").addClass("dropdown-divider"))
-                        .append(
-                          $("<p>").text(
-                            `Sodium (mg): ${data.items[0].sodium_mg}`
-                          )
-                        )
-                    )
-                )
+              $("<p>").text(`Cholesterol (mg): ${data.items[0].cholesterol_mg}`)
             )
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append(
+              $("<p>").text(
+                `Saturated Fat (g): ${data.items[0].fat_saturated_g}`
+              )
+            )
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append(
+              $("<p>").text(`Total Fat (g): ${data.items[0].fat_total_g}`)
+            )
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append($("<p>").text(`Fiber (g): ${data.items[0].fiber_g}`))
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append(
+              $("<p>").text(`Potassium (mg): ${data.items[0].potassium_mg}`)
+            )
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append($("<p>").text(`Protein (g): ${data.items[0].protein_g}`))
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append($("<p>").text(`Sugar (g): ${data.items[0].sugar_g}`))
+            .append($("<hr>").addClass("dropdown-divider"))
+            .append($("<p>").text(`Sodium (mg): ${data.items[0].sodium_mg}`))
         );
-      }
-    });
+      });
+      $(".dropdown").addClass("is-active");
+  }
+}
+
+function addIngredients(recipeId) {
+  $("#modal-recipe-ingredients").empty();
+  for (let i = 0; i < searchResults[recipeId].extendedIngredients.length; i++) {
+    $("#modal-recipe-ingredients").append(
+      $("<div>")
+        .addClass("dropdown")
+        .attr(
+          "id",
+          `dropdown-${searchResults[recipeId].extendedIngredients[i].name}`
+        )
+        .append(
+          $("<div>")
+            .addClass("dropdown-trigger")
+            .append(
+              $("<button>")
+                .addClass("button px-5 ingredient-dropdown-button")
+                .attr(
+                  "id",
+                  `${searchResults[recipeId].extendedIngredients[i].name}`
+                )
+                .attr("aria-haspopup", "true")
+                .attr("aria-controls", "dropdown-menu2")
+                .append(
+                  $("<span>")
+                    .addClass("has-text-left")
+                    .text(searchResults[recipeId].extendedIngredients[i].name)
+                )
+                .append(
+                  $("<span>")
+                    .addClass("material-symbols-outlined has-text-right")
+                    .text("arrow_drop_down")
+                )
+            )
+        )
+        .append(
+          $("<div")
+            .addClass("dropdown-menu")
+            .attr("id", "dropdown-menu-2")
+            .attr("role", "menu")
+            .append($("<div>").addClass("dropdown-content"))
+            .attr("id", `dropdown-${foodName}`)
+        )
+    );
+  }
 }
 
 function createRecipeModal(recipeId) {
@@ -315,83 +304,7 @@ function createRecipeModal(recipeId) {
   $("#modal-recipe-instructions").html(
     `${searchResults[recipeId].instructions}`
   );
-  $("#recipe-title").text(`${searchResults[recipeId].title}`);
-}
-
-// Calls the recipe api, then saves the necessary information to local storage to that it can be loaded on to the recipe page.
-// function loadRecipePage(recipeId) {
-// let apiKey = `f8a45576084f4f37ab0ec30d9cb1358c`; // HIDE THIS LATER
-// console.log("Card Created");
-// let detailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?&apiKey=${apiKey}&includeNutrition=true`;
-// fetch(detailsUrl, {
-//   method: "GET",
-// })
-//   .then(function (response) {
-//     if (!response.ok) {
-//       throw response.json();
-//     }
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//     localStorage.clear();
-//     // Stores the summary into the local storage variable "recipe-description"
-//     localStorage.setItem("recipe-image", data.image);
-//     localStorage.setItem("recipe-name", data.title);
-//     localStorage.setItem("recipe-description", data.summary);
-//     let ingredientsList = [];
-//     for (let i = 0; i < data.extendedIngredients.length; i++) {
-//       ingredientsList.push(data.extendedIngredients[i].name);
-//     }
-//     localStorage.setItem("ingredients-list", ingredientsList);
-//     localStorage.setItem("steps-list", data.instructions);
-//   });
-// }
-
-// function goToRecipePage() {
-//   // $("#recipe-title").empty();
-//   // $("#recipe-description").empty();
-//   // $("#lg-recipe-img").empty();
-//   // $("#ingredients-list").empty();
-
-//   $(document).find("#recipe-title").text(localStorage.getItem("recipe-name"));
-//   // $("#recipe-description").html(localStorage.getItem("recipe-description"));
-//   // $("#lg-recipe-img").attr("src", localStorage.getItem("recipe-image"));
-//   // addIngredients(localStorage.getItem("ingredients-list"))
-// }
-
-function nutritionInfo(foodName) {
-  let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
-  let nutrientUrl = `https://api.calorieninjas.com/v1/nutrition?query=${foodName}`;
-  fetch(nutrientUrl, {
-    method: "GET",
-    headers: {
-      "X-Api-Key": apiKey,
-    },
-  })
-    .then(function (response) {
-      if (!response.ok) {
-        throw response.json();
-      }
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      $("#modal-title").text(
-        `${$("#ingredient-name").text()} Nutrition information`
-      );
-      $("#cals").text(data.items[0].calories);
-      $("#carbs").text(data.items[0].carbohydrates_total_g);
-      $("#cholesterol").text(data.items[0].cholesterol_mg);
-      $("#sat-fat").text(data.items[0].fat_saturated_g);
-      $("#fat").text(data.items[0].fat_total_g);
-      $("#fiber").text(data.items[0].fiber_g);
-      $("#potassium").text(data.items[0].potassium_mg);
-      $("#protein").text(data.items[0].protein_g);
-      $("#sugar").text(data.items[0].sugar_g);
-      $("#sodium").text(data.items[0].sodium_mg);
-      console.log(data.items[0].calories);
-    });
+  addIngredients(recipeId);
 }
 
 $("#searchButton").on("click", function (event) {
@@ -403,12 +316,6 @@ $("#searchButton").on("click", function (event) {
   }, 1000);
 });
 
-// $("#nutrition-button").on("click", function (event) {
-//   event.preventDefault();
-//   $("#nutrient-modal").addClass("is-active");
-//   nutritionInfo($("#nutrition-button").siblings("#ingredient-name").text());
-// });
-
 $("#close-modal").on("click", function () {
   $("#recipe-modal").removeClass("is-active");
 });
@@ -416,4 +323,11 @@ $("#close-modal").on("click", function () {
 $(document).on("click", ".recipe-page-button", function (event) {
   event.preventDefault();
   createRecipeModal(this.id);
+});
+
+$(document).on("click", ".ingredient-dropdown-button", function (event) {
+  event.preventDefault();
+  if ($(".dropdown").attr("class"))
+  console.log("dropdown clicked");
+  nutritionDropdown(this.id);
 });

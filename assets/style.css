@@ -101,6 +101,10 @@ form {
   color: var(--text-color);
 }
 
+.modal-card-head {
+  background-color: var(--bg-color);
+}
+
 #modal-recipe-img {
   object-fit: cover;
 }
@@ -113,6 +117,12 @@ form {
   font-family: var(--font);
   color: var(--text-color);
   line-height: 2rem;
+}
+
+#modal-recipe-ingredients * {
+  width: 100%;
+  background-color: var(--bg-color);
+  margin: auto;
 }
 
 #recipe-title {
