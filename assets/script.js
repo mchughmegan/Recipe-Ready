@@ -264,6 +264,7 @@ function goToRecipePage() {
 }
 
 
+
 function nutritionInfo(foodName) {
   let apiKey = `FNoYwq7dZIli0B7b/T6xGA==3sE2Q0jrARvb5osc`;
   let nutrientUrl = `https://api.calorieninjas.com/v1/nutrition?query=${foodName}`;
@@ -318,21 +319,9 @@ $("#close-modal").on("click", function () {
 });
 
 
-<<<<<<< HEAD
 
 $(document).on("click", ".recipe-page-button", function (event) {
   event.preventDefault();
   loadRecipePage(this.id);
   goToRecipePage()
-=======
-$(document).on("click", ".recipe-page-button", function () {
-  // loadRecipePage($());
-  // need help here with getting id of clicked button
-  console.log("help");
-});
-  loadRecipePage(this.id);
-
-  goToRecipePage()
-
->>>>>>> main
 });
